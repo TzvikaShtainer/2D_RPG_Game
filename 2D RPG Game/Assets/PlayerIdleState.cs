@@ -16,6 +16,9 @@ public class PlayerIdleState : PlayerState
     public override void Update()
     {
         base.Update();
+
+        if (xInput != 0)
+            StateMachine.ChangeState(Player.MoveState);
     }
 
     public override void Exit()
