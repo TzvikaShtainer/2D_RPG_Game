@@ -11,8 +11,13 @@ public class Player : MonoBehaviour
     [Header("Move Info")]
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
+
+    [Header("Dash Info")]
+    [SerializeField] private float dashCooldown = 1;
+    private float dashUsageTimer;
     public float dashSpeed = 25f;
     public float dashDuration = 0.4f;
+    public float DashDir { get; private set; }
 
     [Header("collision Info")]
     [SerializeField] private Transform groundCheck;
@@ -63,6 +68,25 @@ public class Player : MonoBehaviour
     private void Update()
     {
         StateMachine.CurrentState.Update();
+        
+        CheckForDashInput();
+    }
+    
+    private void CheckForDashInput()
+    {
+        dashUsageTimer -= Time.deltaTime;
+        
+        if(Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0)
+        {
+            dashUsageTimer = dashCooldown;
+            DashDir = Input.GetAxisRaw("Horizontal");
+
+            if (DashDir == 0)
+                DashDir = FacingDir;
+            
+            StateMachine.ChangeState(DashState);
+        }
+            
     }
 
     public void SetVelocity(float xVelocity, float yVelocity)
@@ -87,6 +111,8 @@ public class Player : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
+
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
