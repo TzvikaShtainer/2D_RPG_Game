@@ -22,7 +22,7 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.Update();
 
-        Player.SetVelocity(xInput * Player.moveSpeed, Rb.velocity.y);
+        Player.SetVelocity(Player.moveSpeed * xInput, Rb.velocity.y);
         
         if (xInput == 0)
             StateMachine.ChangeState(Player.IdleState);
