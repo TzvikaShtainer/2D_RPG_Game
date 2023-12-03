@@ -7,7 +7,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Move Info")]
-    public float moveSpeed = 12f;
+    public float moveSpeed = 8f;
+    public float jumpForce = 12f;
     
     #region Components
     public PlayerStateMachine StateMachine { get; private set; }
@@ -17,8 +18,10 @@ public class Player : MonoBehaviour
     #endregion
     
     #region States
-    public PlayerIdleState IdleState;
-    public PlayerMoveState MoveState;
+    public PlayerIdleState IdleState { get; private set; }
+    public PlayerMoveState MoveState { get; private set; }
+    public PlayerAirState AirState { get; private set; }
+    public PlayerJumpState JumpState { get; private set; }
     
     #endregion
     
@@ -29,6 +32,8 @@ public class Player : MonoBehaviour
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
         MoveState = new PlayerMoveState(this, StateMachine, "Move");
+        JumpState = new PlayerJumpState(this, StateMachine, "Jump");
+        AirState  = new PlayerAirState(this, StateMachine, "Jump");
     }
 
     private void Start()

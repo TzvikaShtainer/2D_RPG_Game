@@ -28,8 +28,10 @@ public class PlayerState
     public virtual void Update()
     {
         xInput = Input.GetAxisRaw("Horizontal");
+        
+        Player.Anim.SetFloat("yVelocity", Rb.velocity.y);
     }
-
+    
     public virtual void Exit()
     {
         Player.Anim.SetBool(animBoolName, false);

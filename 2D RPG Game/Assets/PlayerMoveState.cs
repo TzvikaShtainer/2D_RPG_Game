@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveState : PlayerState
+public class PlayerMoveState : PlayerGroundedState
 {
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
@@ -12,7 +12,12 @@ public class PlayerMoveState : PlayerState
     {
         base.Enter();
     }
-
+    
+    public override void Exit()
+    {
+        base.Exit();
+    }
+    
     public override void Update()
     {
         base.Update();
@@ -21,10 +26,5 @@ public class PlayerMoveState : PlayerState
         
         if (xInput == 0)
             StateMachine.ChangeState(Player.IdleState);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 }
