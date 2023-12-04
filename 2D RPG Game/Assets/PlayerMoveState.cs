@@ -24,6 +24,9 @@ public class PlayerMoveState : PlayerGroundedState
 
         Player.SetVelocity(Player.moveSpeed * xInput, Rb.velocity.y);
         
+        if(xInput == Player.FacingDir && Player.IsWallDetected()) //my add
+            StateMachine.ChangeState(Player.IdleState);
+        
         if (xInput == 0)
             StateMachine.ChangeState(Player.IdleState);
     }

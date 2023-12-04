@@ -22,6 +22,9 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.Update();
 
+        if(xInput == Player.FacingDir && Player.IsWallDetected())
+            return;
+        
         if (xInput != 0)
             StateMachine.ChangeState(Player.MoveState);
     }
