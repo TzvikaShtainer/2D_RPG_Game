@@ -14,6 +14,7 @@ public class PlayerState
     private string animBoolName;
 
     protected float stateTimer;
+    protected bool triggerCalled; //cuz we cant make an anim event cuz we are using state machine for controling
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, string animBoolName)
     {
@@ -26,6 +27,7 @@ public class PlayerState
     {
         Player.Anim.SetBool(animBoolName, true);
         Rb = Player.Rb;
+        triggerCalled = false;
     }
 
     public virtual void Exit()
@@ -40,5 +42,10 @@ public class PlayerState
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
         Player.Anim.SetFloat("yVelocity", Rb.velocity.y);
+    }
+
+    public virtual void AnimationFinishTrigger()
+    {
+        triggerCalled = true;
     }
 }
