@@ -8,6 +8,12 @@ using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
+    [Header("Attack Details")]
+    //public float[] attackMovement; for only movement forword
+    public Vector2[] attackMovement; // with hooping
+     
+    public bool isBusy { get; private set; }
+    
     [Header("Move Info")]
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
@@ -84,6 +90,15 @@ public class Player : MonoBehaviour
         Debug.Log(IsWallDetected());
     }
 
+    public IEnumerator BusyFor(float seconds)
+    {
+        isBusy = true;
+
+        yield return new WaitForSeconds(seconds);
+
+        isBusy = false;
+    }
+
     public void AnimationTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
     private void CheckForDashInput()
     {
@@ -105,16 +120,29 @@ public class Player : MonoBehaviour
             
     }
 
+    #region Velocity
+    public void ZeroVelocity() => Rb.velocity = new Vector2(0, 0);
     public void SetVelocity(float xVelocity, float yVelocity)
     {
         Rb.velocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
 
+    #endregion
+
+    #region Collisions
     public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
 
     public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDir, wallCheckDistance, whatIsGround);
     
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+    }
+    #endregion
+    
+    #region Flip
     public void FlipController(float xInput)
     {
         if (xInput > 0 && !facingRight)
@@ -129,11 +157,6 @@ public class Player : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0, 180, 0);
     }
-
+    #endregion
     
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
-    }
 }
