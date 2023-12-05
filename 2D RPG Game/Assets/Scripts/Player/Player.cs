@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     [Header("Attack Details")]
     //public float[] attackMovement; for only movement forword
@@ -26,23 +26,7 @@ public class Player : MonoBehaviour
     public float DashDir { get; private set; }
     
     //public float wallSpeed = 0.5f;
-
-    [Header("collision Info")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckDistance;
-    [SerializeField] private LayerMask whatIsGround;
-    [SerializeField] private Transform wallCheck;
-    [SerializeField] private float wallCheckDistance;
-
-    public int FacingDir { get; private set; } = 1;
-    private bool facingRight = true;
-    
-    #region Components
     public PlayerStateMachine StateMachine { get; private set; }
-    public Animator Anim { get; private set; }
-    public Rigidbody2D Rb { get; private set; }
-
-    #endregion
     
     #region States
     public PlayerIdleState IdleState { get; private set; }
@@ -59,8 +43,10 @@ public class Player : MonoBehaviour
     #endregion
     
     
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+        
         StateMachine = new PlayerStateMachine();
 
         IdleState = new PlayerIdleState(this, StateMachine, "Idle");
@@ -74,20 +60,20 @@ public class Player : MonoBehaviour
         PrimaryAttackState = new PlayerPrimaryAttackState(this, StateMachine, "Attack");
     }
 
-    private void Start()
+    protected override void Start()
     {
-        Anim = GetComponentInChildren<Animator>(); //cuz its a child of player
-        Rb = GetComponent<Rigidbody2D>();
+        base.Start();
         
         StateMachine.Initialize(IdleState);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+        
         StateMachine.CurrentState.Update();
         
         CheckForDashInput();
-        Debug.Log(IsWallDetected());
     }
 
     public IEnumerator BusyFor(float seconds)
@@ -117,46 +103,5 @@ public class Player : MonoBehaviour
             
             StateMachine.ChangeState(DashState);
         }
-            
     }
-
-    #region Velocity
-    public void ZeroVelocity() => Rb.velocity = new Vector2(0, 0);
-    public void SetVelocity(float xVelocity, float yVelocity)
-    {
-        Rb.velocity = new Vector2(xVelocity, yVelocity);
-        FlipController(xVelocity);
-    }
-
-    #endregion
-
-    #region Collisions
-    public bool IsGroundDetected() => Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
-
-    public bool IsWallDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * FacingDir, wallCheckDistance, whatIsGround);
-    
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
-    }
-    #endregion
-    
-    #region Flip
-    public void FlipController(float xInput)
-    {
-        if (xInput > 0 && !facingRight)
-            Flip();
-        else if(xInput < 0 && facingRight)
-            Flip();
-    }
-    
-    public void Flip()
-    {
-        FacingDir = FacingDir * -1;
-        facingRight = !facingRight;
-        transform.Rotate(0, 180, 0);
-    }
-    #endregion
-    
 }

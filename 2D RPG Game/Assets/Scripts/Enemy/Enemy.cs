@@ -3,12 +3,15 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class Enemy : MonoBehaviour
+    public class Enemy : Entity
     {
-        public Rigidbody2D Rb { get; private set; }
-        public Animator Anim{ get; private set; }
-        
         public EnemyStateMachine StateMachine { get; private set; }
+
+        #region States
+        
+        
+
+        #endregion
 
         private void Awake()
         {
@@ -17,8 +20,7 @@ namespace Enemy
 
         private void Start()
         {
-            Anim = GetComponentInChildren<Animator>();
-            Rb = GetComponent<Rigidbody2D>();
+            
         }
 
         private void Update()
