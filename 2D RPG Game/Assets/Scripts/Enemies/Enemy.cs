@@ -7,24 +7,17 @@ namespace Enemy
     {
         public EnemyStateMachine StateMachine { get; private set; }
 
-        #region States
-        
-        
-
-        #endregion
-
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             StateMachine = new EnemyStateMachine();
         }
 
-        private void Start()
+        protected override void Update()
         {
-            
-        }
-
-        private void Update()
-        {
+            base.Update();
+                
             StateMachine.CurrentState.Update();
         }
     }

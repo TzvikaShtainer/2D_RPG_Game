@@ -5,15 +5,15 @@ namespace Enemy
     public class EnemyState
     {
         protected EnemyStateMachine EnemyStateMachine;
-        protected Enemy Enemy;
+        protected Enemy EnemyBase;
 
         protected bool triggerCalled;
         protected float stateTimer;
         private string animBoolName;
 
-        public EnemyState(Enemy enemy, EnemyStateMachine enemyStateMachine, string animBoolName)
+        public EnemyState(Enemy enemyBase, EnemyStateMachine enemyStateMachine, string animBoolName)
         {
-            this.Enemy = enemy;
+            this.EnemyBase = enemyBase;
             this.EnemyStateMachine = enemyStateMachine;
             this.animBoolName = animBoolName;
         }
@@ -26,12 +26,12 @@ namespace Enemy
         public virtual void Enter()
         {
             triggerCalled = false;
-            Enemy.Anim.SetBool(animBoolName, true);
+            EnemyBase.Anim.SetBool(animBoolName, true);
         }
 
         public virtual void Exit()
         { 
-            Enemy.Anim.SetBool(animBoolName, false);
+            EnemyBase.Anim.SetBool(animBoolName, false);
         }
     }
 }
