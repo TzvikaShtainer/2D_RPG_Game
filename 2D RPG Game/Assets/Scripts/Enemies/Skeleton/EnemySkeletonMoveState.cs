@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 
-public class EnemySkeletonMoveState : EnemyState
+public class EnemySkeletonMoveState : EnemySkeletonGroundedState
 {
-    private EnemySkeleton enemy;
-    
-    public EnemySkeletonMoveState(Enemy.Enemy enemyBase, EnemyStateMachine enemyStateMachine, string animBoolName, EnemySkeleton enemy) : base(enemy, enemyStateMachine, animBoolName)
-    {
-        this.enemy = enemy;
-    }
 
+    public EnemySkeletonMoveState(Enemy.Enemy enemyBase, EnemyStateMachine enemyStateMachine, string animBoolName, EnemySkeleton enemy) : base(enemyBase, enemyStateMachine, animBoolName, enemy)
+    {
+    }
+    
     public override void Update()
     {
         base.Update();
         
-        enemy.SetVelocity(2 * enemy.FacingDir, enemy.Rb.velocity.y);
+        enemy.SetVelocity(enemy.moveSpeed * enemy.FacingDir, Rb.velocity.y);
 
         if (enemy.IsWallDetected() || !enemy.IsGroundDetected())
         {
@@ -34,4 +32,6 @@ public class EnemySkeletonMoveState : EnemyState
     {
         base.Exit();
     }
+
+    
 }

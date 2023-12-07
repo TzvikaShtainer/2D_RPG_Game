@@ -6,6 +6,7 @@ namespace Enemy
     {
         protected EnemyStateMachine EnemyStateMachine;
         protected Enemy EnemyBase;
+        protected Rigidbody2D Rb;
 
         protected bool triggerCalled;
         protected float stateTimer;
@@ -26,6 +27,7 @@ namespace Enemy
         public virtual void Enter()
         {
             triggerCalled = false;
+            Rb = EnemyBase.Rb;
             EnemyBase.Anim.SetBool(animBoolName, true);
         }
 

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using Enemy;
 using UnityEngine;
 
-public class EnemySkeletonIdleState : EnemyState
+public class EnemySkeletonIdleState : EnemySkeletonGroundedState
 {
-     EnemySkeleton enemy;
-    public EnemySkeletonIdleState(Enemy.Enemy enemyBase, EnemyStateMachine enemyStateMachine, string animBoolName, EnemySkeleton enemy) : base(enemyBase, enemyStateMachine, animBoolName)
+    
+    public EnemySkeletonIdleState(Enemy.Enemy enemyBase, EnemyStateMachine enemyStateMachine, string animBoolName, EnemySkeleton enemy) : base(enemyBase, enemyStateMachine, animBoolName, enemy)
     {
-        this.enemy = enemy;
     }
     public override void Update()
     {
@@ -22,7 +21,7 @@ public class EnemySkeletonIdleState : EnemyState
     {
         base.Enter();
 
-        stateTimer = 1f;
+        stateTimer = enemy.idleTime;
     }
 
     public override void Exit()
