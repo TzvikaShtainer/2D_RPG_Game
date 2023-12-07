@@ -12,11 +12,16 @@ public class Entity : MonoBehaviour
     [SerializeField] protected Transform wallCheck;
     [SerializeField] protected float wallCheckDistance;
     
+    [Header("Attack Info")]
+    public Transform attackCheck;
+    public float attackCheckRadius;
+    
     public int FacingDir { get; private set; } = 1;
     protected bool facingRight = true;
     
     public Animator Anim { get; private set; }
     public Rigidbody2D Rb { get; private set; }
+    public EntityFX fx { get; private set; }
     
     protected virtual void Awake()
     {
@@ -27,11 +32,18 @@ public class Entity : MonoBehaviour
     {
         Anim = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
+        fx = GetComponent<EntityFX>();
     }
 
     protected virtual void Update()
     {
         
+    }
+
+    public virtual void Damage()
+    {
+        fx.StartCoroutine("FlashFX");
+        Debug.Log("I Hit" + gameObject.name);
     }
     
     #region Collisions
@@ -43,6 +55,7 @@ public class Entity : MonoBehaviour
     {
         Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
     #endregion
     
