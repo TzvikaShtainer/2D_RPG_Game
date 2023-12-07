@@ -11,9 +11,12 @@ namespace Enemy
         [Header("Move Info")]
         public float moveSpeed = 2f;
         public float idleTime = 1f;
+        public float battleTime;
 
         [Header("Attack Info")] 
         public float attackDistance = 2f;
+        public float attackCooldown;
+        [HideInInspector] public float lastTimeAttacked;
         
         public EnemyStateMachine StateMachine { get; private set; }
         
@@ -33,6 +36,8 @@ namespace Enemy
             //Debug.Log(IsPlayerDetected().collider.gameObject.name);
         }
 
+        public virtual void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+        
         public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position,
             UnityEngine.Vector2.right * FacingDir, 50, whatIsPlayer);
 

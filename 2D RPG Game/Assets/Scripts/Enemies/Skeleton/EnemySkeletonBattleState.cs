@@ -19,11 +19,19 @@ public class EnemySkeletonBattleState : EnemyState
 
         if (enemy.IsPlayerDetected())
         {
+            stateTimer = enemy.battleTime;
+            
             if (enemy.IsPlayerDetected().distance < enemy.attackDistance)
             {
-                Debug.Log("attack");
-                enemy.ZeroVelocity();
-                return;
+                if (CanAttack())
+                    EnemyStateMachine.ChangeState(enemy.SkeletonAttackState);
+            }
+            else
+            {
+                if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
+                {
+                    EnemyStateMachine.ChangeState(enemy.SkeletonIdleState);   
+                }
             }
         }
 
@@ -44,5 +52,16 @@ public class EnemySkeletonBattleState : EnemyState
     public override void Exit()
     {
         base.Exit();
+    }
+    
+    private bool CanAttack()
+    {
+        if (Time.time >= enemy.lastTimeAttacked + enemy.attackCooldown)
+        {
+            enemy.lastTimeAttacked = Time.time;
+            return true;
+        }
+
+        return false;
     }
 }

@@ -35,5 +35,11 @@ namespace Enemy
         { 
             EnemyBase.Anim.SetBool(animBoolName, false);
         }
+
+        public virtual void AnimationFinishTrigger()
+        {
+            Debug.Log("AnimationFinishTrigger");
+            triggerCalled = true;
+        }
     }
 }
