@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public Animator Anim { get; private set; }
+    public Rigidbody2D Rb { get; private set; }
+    public EntityFX fx { get; private set; }
+
+    [Header("Knock-back Info")]
+    [SerializeField] private Vector2 knockBackDirection;
+    [SerializeField] private float knockBackDuration = 0.07f;
+    protected bool IsKnocked;
+    
     [Header("collision Info")]
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
@@ -17,11 +26,7 @@ public class Entity : MonoBehaviour
     public float attackCheckRadius;
     
     public int FacingDir { get; private set; } = 1;
-    protected bool facingRight = true;
-    
-    public Animator Anim { get; private set; }
-    public Rigidbody2D Rb { get; private set; }
-    public EntityFX fx { get; private set; }
+    protected bool FacingRight = true;
     
     protected virtual void Awake()
     {
@@ -43,7 +48,19 @@ public class Entity : MonoBehaviour
     public virtual void Damage()
     {
         fx.StartCoroutine("FlashFX");
-        Debug.Log("I Hit" + gameObject.name);
+        
+        StartCoroutine(nameof(HitKnockBack));
+    }
+    
+    protected virtual IEnumerator HitKnockBack()
+    {
+        IsKnocked = true;
+
+        Rb.velocity = new Vector2(knockBackDirection.x * -FacingDir, knockBackDirection.y);
+        
+        yield return new WaitForSeconds(knockBackDuration);
+        
+        IsKnocked = false;
     }
     
     #region Collisions
@@ -53,8 +70,12 @@ public class Entity : MonoBehaviour
     
     protected virtual void OnDrawGizmos()
     {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
-        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
+        var position = groundCheck.position;
+        Gizmos.DrawLine(position, new Vector3(position.x, position.y - groundCheckDistance));
+        
+        var position1 = wallCheck.position;
+        Gizmos.DrawLine(position1, new Vector3(position1.x + wallCheckDistance, position1.y));
+        
         Gizmos.DrawWireSphere(attackCheck.position, attackCheckRadius);
     }
     #endregion
@@ -62,24 +83,34 @@ public class Entity : MonoBehaviour
     #region Flip
     public virtual void FlipController(float xInput)
     {
-        if (xInput > 0 && !facingRight)
+        if (xInput > 0 && !FacingRight)
             Flip();
-        else if(xInput < 0 && facingRight)
+        else if(xInput < 0 && FacingRight)
             Flip();
     }
     
     public virtual void Flip()
     {
         FacingDir = FacingDir * -1;
-        facingRight = !facingRight;
+        FacingRight = !FacingRight;
         transform.Rotate(0, 180, 0);
     }
     #endregion
     
     #region Velocity
-    public virtual void SetZeroVelocity() => Rb.velocity = new Vector2(0, 0);
+
+    public virtual void SetZeroVelocity()
+    {
+        if(IsKnocked)
+            return;
+        
+        Rb.velocity = new Vector2(0, 0);
+    }
     public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
+        if(IsKnocked)
+            return;
+        
         Rb.velocity = new Vector2(xVelocity, yVelocity);
         FlipController(xVelocity);
     }
