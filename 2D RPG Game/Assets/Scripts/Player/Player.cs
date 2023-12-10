@@ -11,6 +11,8 @@ public class Player : Entity
     [Header("Attack Details")]
     //public float[] attackMovement; for only movement forword
     public Vector2[] attackMovement; // with hooping
+
+    public float counterAttackDuration = 0.2f;
      
     public bool isBusy { get; private set; }
     
@@ -38,7 +40,8 @@ public class Player : Entity
     public PlayerDashState DashState { get; private set; }
     
     public PlayerPrimaryAttackState PrimaryAttackState { get; private set; }
-    
+    public PlayerCounterAttackState CounterAttackState { get; private set; }
+
 
     #endregion
     
@@ -58,6 +61,8 @@ public class Player : Entity
         WallJumpState = new PlayerWallJumpState(this, StateMachine, "Jump");
         
         PrimaryAttackState = new PlayerPrimaryAttackState(this, StateMachine, "Attack");
+        CounterAttackState = new PlayerCounterAttackState(this, StateMachine, "CounterAttack");
+
     }
 
     protected override void Start()

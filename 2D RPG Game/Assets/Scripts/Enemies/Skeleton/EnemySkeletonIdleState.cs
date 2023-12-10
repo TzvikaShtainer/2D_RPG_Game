@@ -13,14 +13,14 @@ public class EnemySkeletonIdleState : EnemySkeletonGroundedState
     {
         base.Update();
         
-        if(stateTimer > 0)
+        //Debug.Log(stateTimer);
+        if(stateTimer < 0)
             EnemyStateMachine.ChangeState(enemy.SkeletonMoveState);
     }
 
     public override void Enter()
     {
         base.Enter();
-
         stateTimer = enemy.idleTime;
     }
 

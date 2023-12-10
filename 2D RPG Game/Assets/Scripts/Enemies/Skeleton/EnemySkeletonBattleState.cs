@@ -26,13 +26,11 @@ public class EnemySkeletonBattleState : EnemyState
                 if (CanAttack())
                     EnemyStateMachine.ChangeState(enemy.SkeletonAttackState);
             }
-            else
-            {
-                if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 10)
-                {
-                    EnemyStateMachine.ChangeState(enemy.SkeletonIdleState);   
-                }
-            }
+        }
+        else
+        {
+            if (stateTimer < 0 || Vector2.Distance(player.transform.position, enemy.transform.position) > 7)    
+                EnemyStateMachine.ChangeState(enemy.SkeletonIdleState);   
         }
 
         if (player.position.x > enemy.transform.position.x)
