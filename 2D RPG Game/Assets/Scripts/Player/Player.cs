@@ -97,14 +97,11 @@ public class Player : Entity
     public void AnimationTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
     private void CheckForDashInput()
     {
-        dashUsageTimer -= Time.deltaTime;
-        
         if(IsWallDetected())
             return;
         
-        if(Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0)
+        if(Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.Dash.CanUseSkill())
         {
-            dashUsageTimer = dashCooldown;
             DashDir = Input.GetAxisRaw("Horizontal");
 
             if (DashDir == 0)
