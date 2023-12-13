@@ -19,6 +19,7 @@ public class Player : Entity
     [Header("Move Info")]
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
+    public float swordReturnImpact = 7f;
 
     [Header("Dash Info")]
     [SerializeField] private float dashCooldown = 1;
