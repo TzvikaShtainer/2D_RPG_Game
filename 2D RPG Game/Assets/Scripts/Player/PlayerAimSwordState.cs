@@ -18,6 +18,8 @@ public class PlayerAimSwordState : PlayerState
     public override void Exit()
     {
         base.Exit();
+
+        Player.StartCoroutine("BusyFor", 0.2f);
     }
 
     public override void Update()
