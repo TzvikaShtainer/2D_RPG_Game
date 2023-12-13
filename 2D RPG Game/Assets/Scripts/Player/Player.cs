@@ -27,7 +27,8 @@ public class Player : Entity
     public float dashDuration = 0.4f;
     public float DashDir { get; private set; }
 
-    public SkillManager skill { get; private set; }
+    public SkillManager Skill { get; private set; }
+    public GameObject Sword { get; private set; }
     
     //public float wallSpeed = 0.5f;
     public PlayerStateMachine StateMachine { get; private set; }
@@ -77,7 +78,7 @@ public class Player : Entity
     {
         base.Start();
         
-        skill = SkillManager.instance;
+        Skill = SkillManager.instance;
         
         StateMachine.Initialize(IdleState);
     }
@@ -89,6 +90,16 @@ public class Player : Entity
         StateMachine.CurrentState.Update();
         
         CheckForDashInput();
+    }
+
+    public void AssignNewSword(GameObject newSword)
+    {
+        Sword = newSword;
+    }
+    
+    public void ClearSword()
+    {
+        Destroy(Sword);
     }
 
     public IEnumerator BusyFor(float seconds)

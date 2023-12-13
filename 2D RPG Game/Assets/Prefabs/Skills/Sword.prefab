@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 949239341770584784}
   - component: {fileID: 8405078343993922578}
-  - component: {fileID: 6337880564182905831}
   - component: {fileID: 4388504050437907812}
-  m_Layer: 0
+  - component: {fileID: 3646513702193532548}
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6337880564182905831
+--- !u!114 &4388504050437907812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500784666819261468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7dffc1c26e4ea14889e09a4c17917f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &3646513702193532548
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,24 +103,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.07355249}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7574338
---- !u!114 &4388504050437907812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3500784666819261468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7dffc1c26e4ea14889e09a4c17917f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.5
 --- !u!1 &8590145486323187817
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 5881281329462263669}
   - component: {fileID: 8030465675560275588}
   - component: {fileID: 4356285835268492964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,13 +135,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8590145486323187817}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.86602545, w: 0.49999994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 949239341770584784}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120}
 --- !u!212 &8030465675560275588
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: -2076022963
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 1633007794, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
+  m_Sprite: {fileID: -2004053239, guid: f6b296ee51c42564abe9c05f1c502ecd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

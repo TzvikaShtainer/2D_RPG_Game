@@ -22,7 +22,7 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetKeyDown(KeyCode.Mouse1) && HaNoSword())
             StateMachine.ChangeState(Player.AimSwordState);
         
         if(Input.GetKeyDown(KeyCode.Q))
@@ -36,5 +36,14 @@ public class PlayerGroundedState : PlayerState
         
         if (Input.GetKeyDown(KeyCode.Space) && Player.IsGroundDetected())
             StateMachine.ChangeState(Player.JumpState);
+    }
+
+    private bool HaNoSword()
+    {
+        if (!Player.Sword)
+            return true;
+
+        Player.Sword.GetComponent<Sword_Skill_Controller>().ReturnSword();
+        return false;
     }
 }
