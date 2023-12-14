@@ -7,8 +7,21 @@ using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 using Update = Unity.VisualScripting.Update;
 
+public enum SwordType
+{
+    Regular,
+    Bounce,
+    Pierce,
+    Spin
+}
 public class Sword_Skill : Skill
 {
+    public SwordType swordType = SwordType.Regular;
+    
+    [Header("Bounce Info")]
+    [SerializeField] private float amountOfBounce;
+    [SerializeField] private float bounceGravity;
+    
     [Header("Sword Skill Info")]
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchForce;
@@ -57,6 +70,7 @@ public class Sword_Skill : Skill
         DotsActive(false);
     }
 
+    #region Aim
     public Vector2 AimDirection()
     {
         Vector2 playerPosition = Player.transform.position;
@@ -93,5 +107,5 @@ public class Sword_Skill : Skill
 
         return position;
     }
-
+    #endregion
 }

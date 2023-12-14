@@ -74,6 +74,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7dffc1c26e4ea14889e09a4c17917f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  returnSpeed: 12
+  isBouncing: 1
+  amountOfBounce: 4
+  enemyTarget: []
+  targetIndex: 0
 --- !u!58 &3646513702193532548
 CircleCollider2D:
   m_ObjectHideFlags: 0
