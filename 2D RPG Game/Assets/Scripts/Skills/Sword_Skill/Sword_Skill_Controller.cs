@@ -15,10 +15,13 @@ public class Sword_Skill_Controller : MonoBehaviour
     private bool canRotate = true;
     private bool isReturning;
 
+    [Header("Pierce Info")]
+    [SerializeField] private float pierceAmount;
+    
     [Header("bounce Info")]
     [SerializeField] private float swordBouncingSpeed = 20;
     private bool isBouncing = false;
-    private int amountOfBounce;
+    private int bounceAmount;
     private List<Transform> enemyTarget = new List<Transform>();
     public int targetIndex;
     private float swordRadius = 10;
@@ -56,9 +59,9 @@ public class Sword_Skill_Controller : MonoBehaviour
             if (Vector2.Distance(transform.position, enemyTarget[targetIndex].position) < 0.1f)
             {
                 targetIndex++;
-                amountOfBounce--;
+                bounceAmount--;
 
-                if (amountOfBounce <= 0)
+                if (bounceAmount <= 0)
                 {
                     isBouncing = false;
                     isReturning = true;
@@ -77,13 +80,19 @@ public class Sword_Skill_Controller : MonoBehaviour
         rb.velocity = dir;
         rb.gravityScale = gravityScale;  
         
-        anim.SetBool("Rotation", true);
+        if(pierceAmount <= 0)
+            anim.SetBool("Rotation", true);
     }
 
     public void SetupBounce(bool _isBouncing, int _amountOfBounce)
     {
         isBouncing = _isBouncing;
-        amountOfBounce = _amountOfBounce;
+        bounceAmount = _amountOfBounce;
+    }
+
+    public void SetupPierce(int peirceAmount)
+    {
+        this.pierceAmount = peirceAmount;
     }
     public void ReturnSword()
     {
@@ -99,6 +108,8 @@ public class Sword_Skill_Controller : MonoBehaviour
         if (isReturning)
             return;
 
+        other.GetComponent<Enemy.Enemy>()?.Damage();
+        
         if (other.GetComponent<Enemy.Enemy>() != null)
         {
             if (isBouncing && enemyTarget.Count <= 0)
@@ -118,7 +129,12 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void StuckInto(Collider2D other)
     {
-
+        if(pierceAmount > 0 && other.GetComponent<Enemy.Enemy>() != null)
+        {
+            pierceAmount--;
+            return;
+        }
+        
         canRotate = false;
         cd.enabled = false;
 

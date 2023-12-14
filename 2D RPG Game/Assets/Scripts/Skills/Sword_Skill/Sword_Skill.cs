@@ -18,9 +18,14 @@ public class Sword_Skill : Skill
 {
     public SwordType swordType = SwordType.Regular;
     
+    
     [Header("Bounce Info")]
-    [SerializeField] private int amountOfBounce;
+    [SerializeField] private int bounceAmount;
     [SerializeField] private float bounceGravity;
+    
+    [Header("Peirce Info")]
+    [SerializeField] private int peirceAmount;
+    [SerializeField] private float peirceGravity;
     
     [Header("Sword Skill Info")]
     [SerializeField] private GameObject swordPrefab;
@@ -41,8 +46,10 @@ public class Sword_Skill : Skill
         base.Start();
         
         GenerateDots();
-    }
 
+        SetGravity();
+    }
+    
     protected override void Update()
     {
         if (Input.GetKeyUp(KeyCode.Mouse1))
@@ -57,6 +64,14 @@ public class Sword_Skill : Skill
             }
         }
     }
+    
+    private void SetGravity()
+    {
+        if (swordType == SwordType.Bounce)
+            swordGravity = bounceGravity;
+        else if (swordType == SwordType.Pierce)
+            swordGravity = peirceGravity;
+    }
 
     public void CreateSword()
     {
@@ -64,10 +79,10 @@ public class Sword_Skill : Skill
         Sword_Skill_Controller newSwordSkillScript = newSword.GetComponent<Sword_Skill_Controller>();
 
         if (swordType == SwordType.Bounce)
-        {
-            swordGravity = bounceGravity;
-            newSwordSkillScript.SetupBounce(true, amountOfBounce);
-        }
+            newSwordSkillScript.SetupBounce(true, bounceAmount);
+        else if (swordType == SwordType.Pierce)
+            newSwordSkillScript.SetupPierce(peirceAmount);
+        
         
         newSwordSkillScript.SetupSword(finalDir, swordGravity, Player);
         

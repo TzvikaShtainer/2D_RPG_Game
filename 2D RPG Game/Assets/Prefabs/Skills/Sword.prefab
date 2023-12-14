@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8405078343993922578}
   - component: {fileID: 4388504050437907812}
   - component: {fileID: 3646513702193532548}
+  - component: {fileID: 8482677558760628608}
   m_Layer: 9
   m_Name: Sword
   m_TagString: Untagged
@@ -75,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnSpeed: 12
+  pierceAmount: 0
   swordBouncingSpeed: 20
   targetIndex: 0
 --- !u!58 &3646513702193532548
@@ -111,7 +113,42 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
+--- !u!70 &8482677558760628608
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3500784666819261468}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.065574415, y: -0.012295464}
+  m_Size: {x: 1.4754157, y: 0.35245848}
+  m_Direction: 1
 --- !u!1 &8590145486323187817
 GameObject:
   m_ObjectHideFlags: 0
