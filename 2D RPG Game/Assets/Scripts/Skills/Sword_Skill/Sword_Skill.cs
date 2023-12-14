@@ -19,7 +19,7 @@ public class Sword_Skill : Skill
     public SwordType swordType = SwordType.Regular;
     
     [Header("Bounce Info")]
-    [SerializeField] private float amountOfBounce;
+    [SerializeField] private int amountOfBounce;
     [SerializeField] private float bounceGravity;
     
     [Header("Sword Skill Info")]
@@ -62,6 +62,12 @@ public class Sword_Skill : Skill
     {
         GameObject newSword = Instantiate(swordPrefab, Player.transform.position, transform.rotation);
         Sword_Skill_Controller newSwordSkillScript = newSword.GetComponent<Sword_Skill_Controller>();
+
+        if (swordType == SwordType.Bounce)
+        {
+            swordGravity = bounceGravity;
+            newSwordSkillScript.SetupBounce(true, amountOfBounce);
+        }
         
         newSwordSkillScript.SetupSword(finalDir, swordGravity, Player);
         

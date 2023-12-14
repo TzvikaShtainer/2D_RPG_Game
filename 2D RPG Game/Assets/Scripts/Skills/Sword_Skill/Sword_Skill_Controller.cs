@@ -15,10 +15,11 @@ public class Sword_Skill_Controller : MonoBehaviour
     private bool canRotate = true;
     private bool isReturning;
 
-    public float swordBouncingSpeed = 20;
-    public bool isBouncing = true;
-    public int amountOfBounce = 4;
-    public List<Transform> enemyTarget;
+    [Header("bounce Info")]
+    [SerializeField] private float swordBouncingSpeed = 20;
+    private bool isBouncing = false;
+    private int amountOfBounce;
+    private List<Transform> enemyTarget = new List<Transform>();
     public int targetIndex;
     private float swordRadius = 10;
     
@@ -43,9 +44,15 @@ public class Sword_Skill_Controller : MonoBehaviour
                 player.CatchhSword();
         }
 
+        BounceLogic();
+    }
+
+    private void BounceLogic()
+    {
         if (isBouncing && enemyTarget.Count > 0)
         {
-            transform.position = Vector2.MoveTowards(transform.position, enemyTarget[targetIndex].position, swordBouncingSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, enemyTarget[targetIndex].position,
+                swordBouncingSpeed * Time.deltaTime);
             if (Vector2.Distance(transform.position, enemyTarget[targetIndex].position) < 0.1f)
             {
                 targetIndex++;
@@ -73,6 +80,11 @@ public class Sword_Skill_Controller : MonoBehaviour
         anim.SetBool("Rotation", true);
     }
 
+    public void SetupBounce(bool _isBouncing, int _amountOfBounce)
+    {
+        isBouncing = _isBouncing;
+        amountOfBounce = _amountOfBounce;
+    }
     public void ReturnSword()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
