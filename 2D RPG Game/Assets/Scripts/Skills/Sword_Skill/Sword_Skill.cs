@@ -17,7 +17,12 @@ public enum SwordType
 public class Sword_Skill : Skill
 {
     public SwordType swordType = SwordType.Regular;
-    
+
+    [Header("Spin Info")]
+    [SerializeField] private float hitCooldown = 0.35f;
+    [SerializeField] private float maxDistance;
+    [SerializeField] private float spinDuration;
+    [SerializeField] private float spinGravity;
     
     [Header("Bounce Info")]
     [SerializeField] private int bounceAmount;
@@ -71,6 +76,8 @@ public class Sword_Skill : Skill
             swordGravity = bounceGravity;
         else if (swordType == SwordType.Pierce)
             swordGravity = peirceGravity;
+        else if (swordType == SwordType.Spin)
+            swordGravity = spinGravity;
     }
 
     public void CreateSword()
@@ -82,6 +89,8 @@ public class Sword_Skill : Skill
             newSwordSkillScript.SetupBounce(true, bounceAmount);
         else if (swordType == SwordType.Pierce)
             newSwordSkillScript.SetupPierce(peirceAmount);
+        else if (swordType == SwordType.Spin)
+            newSwordSkillScript.SetupSpin(true, maxDistance, spinDuration, hitCooldown);
         
         
         newSwordSkillScript.SetupSword(finalDir, swordGravity, Player);
