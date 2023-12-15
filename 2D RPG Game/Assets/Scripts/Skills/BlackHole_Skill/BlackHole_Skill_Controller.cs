@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -28,11 +29,34 @@ public class BlackHole_Skill_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            DestroyHotKeys(); //destroy the hot keys that we make on top the enemies
-            cloneAttackReleased = true;
-            canCreateHotKey = false;
+            ReleaseCloneAttack();
         }
         
+        CloneAttackLogic();
+        
+        if (canGrow && !canShrink)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(maxSize, maxSize), growSpeed * Time.deltaTime); //make the circle to grow until max over time
+        }
+
+        if (canShrink)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(-1, -1),shrinkSpeed * Time.deltaTime);
+            
+            if(transform.localScale.x < 0)
+                Destroy(gameObject);
+        }
+    }
+
+    private void ReleaseCloneAttack()
+    {
+        DestroyHotKeys(); //destroy the hot keys that we make on top the enemies
+        cloneAttackReleased = true;
+        canCreateHotKey = false;
+    }
+
+    private void CloneAttackLogic()
+    {
         if (cloneAttackTimer <= 0 && cloneAttackReleased)
         {
             cloneAttackTimer = cloneAttackCooldown;
@@ -53,19 +77,6 @@ public class BlackHole_Skill_Controller : MonoBehaviour
                 cloneAttackReleased = false;
             }
         }
-        
-        if (canGrow && !canShrink)
-        {
-            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(maxSize, maxSize), growSpeed * Time.deltaTime); //make the circle to grow until max over time
-        }
-
-        if (canShrink)
-        {
-            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(-1, -1),shrinkSpeed * Time.deltaTime);
-            
-            if(transform.localScale.x < 0)
-                Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,6 +88,12 @@ public class BlackHole_Skill_Controller : MonoBehaviour
             enemy.FreezeTime(true);
             CreateHotKey(other, enemy);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<Enemy.Enemy>() != null)
+            other.GetComponent<Enemy.Enemy>().FreezeTime(false);
     }
 
     private void DestroyHotKeys()
