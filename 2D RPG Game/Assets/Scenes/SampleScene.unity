@@ -1103,12 +1103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc67476ef7209c4abcdb31eb1eb683e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hotKeyPrefab: {fileID: 0}
+  hotKeyPrefab: {fileID: 7310057406092587985, guid: e98cad075998e3c44a0c900de4ac61aa, type: 3}
   keyCodesList: 7100000077000000650000007200000074000000
   maxSize: 15
   growSpeed: 1
   canGrow: 1
-  targets: []
 --- !u!212 &460939527
 SpriteRenderer:
   m_ObjectHideFlags: 0

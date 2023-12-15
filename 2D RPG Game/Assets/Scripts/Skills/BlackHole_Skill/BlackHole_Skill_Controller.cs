@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,11 +10,31 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     public float maxSize;
     public float growSpeed;
     public bool canGrow;
+
+    private bool canAttack;
+    public int amountOfAttacks = 4;
+    public float cloneAttackCooldown = 0.3f;
+    private float cloneAttackTimer;
     
     List<Transform> targets = new List<Transform>();
 
     private void Update()
     {
+        cloneAttackTimer -= Time.deltaTime;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            canAttack = true;
+        
+        if (cloneAttackTimer <= 0 && canAttack)
+        {
+            cloneAttackTimer = cloneAttackCooldown;
+            SkillManager.instance.Clone.CreateClone(targets[Random.Range(0, targets.Count)]);
+            amountOfAttacks--;
+
+            if (amountOfAttacks <= 0)
+                canAttack = false;
+        }
+        
         if (canGrow)
         {
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(maxSize, maxSize), growSpeed * Time.deltaTime); //make the circle to grow until max over time

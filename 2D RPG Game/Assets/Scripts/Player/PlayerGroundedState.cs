@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerGroundedState : PlayerState
@@ -25,7 +23,7 @@ public class PlayerGroundedState : PlayerState
         if(Input.GetKeyDown(KeyCode.Mouse1) && HaNoSword())
             StateMachine.ChangeState(Player.AimSwordState);
         
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Z))
             StateMachine.ChangeState(Player.CounterAttackState);
             
         if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
