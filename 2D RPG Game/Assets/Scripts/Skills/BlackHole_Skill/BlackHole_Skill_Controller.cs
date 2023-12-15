@@ -8,16 +8,17 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     [SerializeField] private GameObject hotKeyPrefab;
     [SerializeField] private List<KeyCode> keyCodesList;
     
-    public float maxSize;
-    public float growSpeed;
-    public float shrinkSpeed;
-    public bool canGrow;
-    public bool canShrink;
-
+    private float maxSize;
+    private float growSpeed;
+    private float shrinkSpeed;
+    
+    private bool canGrow = true;
+    private bool canShrink;
     private bool canCreateHotKey = true;
     private bool cloneAttackReleased;
-    public int amountOfAttacks = 4;
-    public float cloneAttackCooldown = 0.3f;
+
+    private int amountOfAttacks;
+    private float cloneAttackCooldown = 0.3f;
     private float cloneAttackTimer;
     
     private List<Transform> targets = new List<Transform>();
@@ -48,6 +49,14 @@ public class BlackHole_Skill_Controller : MonoBehaviour
         }
     }
 
+    public void SetupBlackHole(float maxSize, float growSpeed, float shrinkSpeed, int amountOfAttacks, float cloneAttackCooldown)
+    {
+        this.maxSize = maxSize;
+        this.growSpeed = growSpeed;
+        this.shrinkSpeed = shrinkSpeed;
+        this.amountOfAttacks = amountOfAttacks;
+        this.cloneAttackCooldown = cloneAttackCooldown;
+    }
     private void ReleaseCloneAttack()
     {
         DestroyHotKeys(); //destroy the hot keys that we make on top the enemies
