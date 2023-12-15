@@ -48,6 +48,7 @@ public class Player : Entity
     
     public PlayerCatchSwordState CatchSwordState { get; private set; }
     public PlayerAimSwordState AimSwordState { get; private set; }
+    public PlayerBlackHoleState blackHoleState{ get; private set; }
 
 
     #endregion
@@ -72,6 +73,8 @@ public class Player : Entity
         
         CatchSwordState = new PlayerCatchSwordState(this, StateMachine, "CatchSword");
         AimSwordState = new PlayerAimSwordState(this, StateMachine, "AimSword");
+
+        blackHoleState = new PlayerBlackHoleState(this, StateMachine, "Jump");
 
     }
 

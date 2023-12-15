@@ -32,6 +32,11 @@ public class BlackHole_Skill : Skill
     {
         base.UseSkill();
 
+        CreateBlackHole();
+    }
+
+    private void CreateBlackHole ()
+    {
         GameObject newBlackHole = Instantiate(blackHolePrefab);
         BlackHole_Skill_Controller blackHoleSkillController = newBlackHole.GetComponent<BlackHole_Skill_Controller>();
         blackHoleSkillController.SetupBlackHole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown);

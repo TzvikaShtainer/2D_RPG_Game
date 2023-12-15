@@ -20,6 +20,9 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
+        if(Input.GetKeyDown(KeyCode.R))
+            StateMachine.ChangeState(Player.blackHoleState);
+        
         if(Input.GetKeyDown(KeyCode.Mouse1) && HaNoSword())
             StateMachine.ChangeState(Player.AimSwordState);
         
