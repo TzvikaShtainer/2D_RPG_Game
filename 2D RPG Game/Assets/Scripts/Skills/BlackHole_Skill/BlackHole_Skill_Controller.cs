@@ -9,35 +9,62 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     
     public float maxSize;
     public float growSpeed;
+    public float shrinkSpeed;
     public bool canGrow;
+    public bool canShrink;
 
-    private bool canAttack;
+    private bool canCreateHotKey = true;
+    private bool cloneAttackReleased;
     public int amountOfAttacks = 4;
     public float cloneAttackCooldown = 0.3f;
     private float cloneAttackTimer;
     
-    List<Transform> targets = new List<Transform>();
+    private List<Transform> targets = new List<Transform>();
+    private List<GameObject> createdHotKeys = new List<GameObject>();
 
     private void Update()
     {
         cloneAttackTimer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.R))
-            canAttack = true;
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            DestroyHotKeys(); //destroy the hot keys that we make on top the enemies
+            cloneAttackReleased = true;
+            canCreateHotKey = false;
+        }
         
-        if (cloneAttackTimer <= 0 && canAttack)
+        if (cloneAttackTimer <= 0 && cloneAttackReleased)
         {
             cloneAttackTimer = cloneAttackCooldown;
-            SkillManager.instance.Clone.CreateClone(targets[Random.Range(0, targets.Count)]);
+
+            float xOffset;
+
+            if (Random.Range(0, 100) > 50)
+                xOffset = 2;
+            else
+                xOffset = -2;
+            
+            SkillManager.instance.Clone.CreateClone(targets[Random.Range(0, targets.Count)], new Vector3(xOffset, 0));
             amountOfAttacks--;
 
             if (amountOfAttacks <= 0)
-                canAttack = false;
+            {
+                canShrink = true;
+                cloneAttackReleased = false;
+            }
         }
         
-        if (canGrow)
+        if (canGrow && !canShrink)
         {
             transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(maxSize, maxSize), growSpeed * Time.deltaTime); //make the circle to grow until max over time
+        }
+
+        if (canShrink)
+        {
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(-1, -1),shrinkSpeed * Time.deltaTime);
+            
+            if(transform.localScale.x < 0)
+                Destroy(gameObject);
         }
     }
 
@@ -52,13 +79,26 @@ public class BlackHole_Skill_Controller : MonoBehaviour
         }
     }
 
+    private void DestroyHotKeys()
+    {
+        if(createdHotKeys.Count <= 0 )
+            return;
+
+        for (int i = 0; i < createdHotKeys.Count; i++)
+        {
+           Destroy(createdHotKeys[i]);
+        }
+    }
     private void CreateHotKey(Collider2D other, Enemy.Enemy enemy)
     {
         if(keyCodesList.Count <= 0)
             return;
         
-        GameObject newHotKey = Instantiate(hotKeyPrefab, other.transform.position + new Vector3(0, 2),
-            Quaternion.identity);
+        if(!canCreateHotKey)
+            return;
+        
+        GameObject newHotKey = Instantiate(hotKeyPrefab, other.transform.position + new Vector3(0, 2), Quaternion.identity);
+        createdHotKeys.Add(newHotKey);
 
         KeyCode chosenKey = keyCodesList[Random.Range(0, keyCodesList.Count)];
 

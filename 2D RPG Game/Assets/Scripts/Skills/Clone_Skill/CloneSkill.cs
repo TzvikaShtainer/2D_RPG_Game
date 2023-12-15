@@ -10,10 +10,10 @@ public class CloneSkill : Skill
     [Space]
     [SerializeField] private bool canAttack = true;
     
-    public void CreateClone(Transform clonePosition)
+    public void CreateClone(Transform clonePosition, Vector3 offset)
     {
         GameObject newClone = Instantiate(clonePrefab);
 
-        newClone.GetComponent<Clone_Skill_Controller>().SetupClone(clonePosition, cloneDuration, canAttack, Vector3.zero);
+        newClone.GetComponent<Clone_Skill_Controller>().SetupClone(clonePosition, cloneDuration, canAttack, offset);
     }
 }
