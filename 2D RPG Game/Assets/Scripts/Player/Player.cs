@@ -98,7 +98,7 @@ public class Player : Entity
         Sword = newSword;
     }
     
-    public void CatchhSword()
+    public void CatchSword()
     {
         StateMachine.ChangeState(CatchSwordState);
         Destroy(Sword);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Vector2 = System.Numerics.Vector2;
@@ -19,6 +20,7 @@ namespace Enemy
         public float moveSpeed = 2f;
         public float idleTime = 2f;
         public float battleTime;
+        private float defaultMoveSpeed;
 
         [Header("Attack Info")] 
         public float attackDistance = 2f;
@@ -32,6 +34,8 @@ namespace Enemy
             base.Awake();
             
             StateMachine = new EnemyStateMachine();
+
+            defaultMoveSpeed = moveSpeed;
         }
 
         protected override void Update()
@@ -43,6 +47,30 @@ namespace Enemy
             //Debug.Log(IsPlayerDetected().collider.gameObject.name);
         }
 
+        public virtual void FreezeTime(bool timeFrozen)
+        {
+            if (timeFrozen)
+            {
+                moveSpeed = 0;
+                Anim.speed = 0;
+            }
+            else
+            {
+                moveSpeed = defaultMoveSpeed;
+                Anim.speed = 1;
+            }
+            
+        }
+
+        protected virtual IEnumerator FreezeTimeFor(float seconds)
+        {
+            FreezeTime(true);
+            
+            yield return new WaitForSeconds(seconds);
+            
+            FreezeTime(false);
+        }
+        
         public virtual void OpenCounterAttackWindow()
         {
             canBeStuuned = true;
