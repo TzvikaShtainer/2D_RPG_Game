@@ -27,6 +27,7 @@ public class Sword_Skill : Skill
     [Header("Bounce Info")]
     [SerializeField] private int bounceAmount;
     [SerializeField] private float bounceGravity;
+    [SerializeField] private float bounceSpeed;
     
     [Header("Peirce Info")]
     [SerializeField] private int peirceAmount;
@@ -38,6 +39,7 @@ public class Sword_Skill : Skill
     [SerializeField] private float swordGravity;
     [SerializeField] private float freezeTimeDuration;
     [SerializeField] private float swordTimeDuration;
+    [SerializeField] private float returnSpeed;
 
     private Vector2 finalDir;
 
@@ -88,14 +90,14 @@ public class Sword_Skill : Skill
         Sword_Skill_Controller newSwordSkillScript = newSword.GetComponent<Sword_Skill_Controller>();
 
         if (swordType == SwordType.Bounce)
-            newSwordSkillScript.SetupBounce(true, bounceAmount);
+            newSwordSkillScript.SetupBounce(true, bounceAmount, bounceSpeed);
         else if (swordType == SwordType.Pierce)
             newSwordSkillScript.SetupPierce(peirceAmount);
         else if (swordType == SwordType.Spin)
             newSwordSkillScript.SetupSpin(true, maxDistance, spinDuration, hitCooldown);
         
         
-        newSwordSkillScript.SetupSword(finalDir, swordGravity, Player, freezeTimeDuration, swordTimeDuration);
+        newSwordSkillScript.SetupSword(finalDir, swordGravity, Player, freezeTimeDuration, swordTimeDuration, returnSpeed);
         
         Player.AssignNewSword(newSword);
         

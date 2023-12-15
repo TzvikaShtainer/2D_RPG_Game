@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Sword_Skill_Controller : MonoBehaviour
 {
-    [SerializeField] private float returnSpeed = 12f;
-    
     private Animator anim;
     private Rigidbody2D rb;
     private CircleCollider2D cd;
@@ -16,13 +14,13 @@ public class Sword_Skill_Controller : MonoBehaviour
     private bool isReturning;
 
     private float freezeTimeDuration;
-    private float swordTimeDuration;
+    private float returnSpeed = 12f;
     
     [Header("Pierce Info")]
     private float pierceAmount;
     
     [Header("bounce Info")]
-    [SerializeField] private float swordBouncingSpeed = 20;
+    private float swordBouncingSpeed = 20;
     private bool isBouncing = false;
     private int bounceAmount;
     private List<Transform> enemyTarget = new List<Transform>();
@@ -137,11 +135,11 @@ public class Sword_Skill_Controller : MonoBehaviour
         spinTimer = spinDuration;
     }
 
-    public void SetupSword(Vector2 dir, float gravityScale, Player player, float freezeTimeDuration, float swordTimeDuration)
+    public void SetupSword(Vector2 dir, float gravityScale, Player player, float freezeTimeDuration, float swordTimeDuration, float returnSpeed)
     {
         this.player = player;
         this.freezeTimeDuration = freezeTimeDuration;
-        this.swordTimeDuration = swordTimeDuration;
+        this.returnSpeed = returnSpeed;
         
         rb.velocity = dir;
         rb.gravityScale = gravityScale;  
@@ -154,10 +152,11 @@ public class Sword_Skill_Controller : MonoBehaviour
         Invoke(nameof(DestroyMe), swordTimeDuration);
     }
 
-    public void SetupBounce(bool _isBouncing, int _amountOfBounce)
+    public void SetupBounce(bool _isBouncing, int _amountOfBounce, float swordBouncingSpeed)
     {
         isBouncing = _isBouncing;
         bounceAmount = _amountOfBounce;
+        this.swordBouncingSpeed = swordBouncingSpeed;
     }
 
     public void SetupPierce(int peirceAmount)
