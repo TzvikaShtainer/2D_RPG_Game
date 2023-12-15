@@ -16,6 +16,7 @@ public class Sword_Skill_Controller : MonoBehaviour
     private bool isReturning;
 
     private float freezeTimeDuration;
+    private float swordTimeDuration;
     
     [Header("Pierce Info")]
     private float pierceAmount;
@@ -136,10 +137,11 @@ public class Sword_Skill_Controller : MonoBehaviour
         spinTimer = spinDuration;
     }
 
-    public void SetupSword(Vector2 dir, float gravityScale, Player player, float freezeTimeDuration)
+    public void SetupSword(Vector2 dir, float gravityScale, Player player, float freezeTimeDuration, float swordTimeDuration)
     {
         this.player = player;
         this.freezeTimeDuration = freezeTimeDuration;
+        this.swordTimeDuration = swordTimeDuration;
         
         rb.velocity = dir;
         rb.gravityScale = gravityScale;  
@@ -148,6 +150,8 @@ public class Sword_Skill_Controller : MonoBehaviour
             anim.SetBool("Rotation", true);
 
         spinDirection = Mathf.Clamp(rb.velocity.x, -1, 1); //makes the sword go forward when spinning
+        
+        Invoke(nameof(DestroyMe), swordTimeDuration);
     }
 
     public void SetupBounce(bool _isBouncing, int _amountOfBounce)
@@ -246,5 +250,10 @@ public class Sword_Skill_Controller : MonoBehaviour
         
         anim.SetBool("Rotation", false);
         transform.parent = other.transform;
+    }
+
+    private void DestroyMe()
+    {
+        Destroy(gameObject);
     }
 }
