@@ -18,7 +18,7 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     private bool cloneAttackReleased;
 
     private int amountOfAttacks;
-    private float cloneAttackCooldown = 0.3f;
+    private float cloneAttackCooldown;
     private float cloneAttackTimer;
     
     private List<Transform> targets = new List<Transform>();
