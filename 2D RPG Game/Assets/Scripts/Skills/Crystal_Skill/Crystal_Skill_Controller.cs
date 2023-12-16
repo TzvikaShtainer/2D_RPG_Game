@@ -14,6 +14,10 @@ public class Crystal_Skill_Controller : MonoBehaviour
     
     private bool canMoveToEnemy;
     private float moveSpeed;
+
+    private bool canGrow;
+    private float growSpeed = 5;
+    [SerializeField] private float maxSize = 3;
     
 
     public void SetupCrystal(float crystalDuration, bool canExplode, bool canMoveToEnemy, float moveSpeed)
@@ -32,12 +36,18 @@ public class Crystal_Skill_Controller : MonoBehaviour
         {
             FinishCrystal();
         }
+        
+        if (canGrow)
+            transform.localScale = Vector2.Lerp(transform.localScale, new Vector2(maxSize, maxSize), growSpeed * Time.deltaTime); //make the circle to grow until max over time
     }
 
     public void FinishCrystal()
     {
         if (canExplode)
+        {
+            canGrow = true;
             anim.SetTrigger("Explode");
+        }
         else
             SelfDestroy();
     }

@@ -6080,6 +6080,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1451475203866394921, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
+      propertyPath: growSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
       propertyPath: m_Name
       value: Crystal
@@ -6123,10 +6127,6 @@ PrefabInstance:
     - target: {fileID: 2904207947042113350, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6943075276577176859, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
