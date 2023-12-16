@@ -94,6 +94,9 @@ public class Player : Entity
         StateMachine.CurrentState.Update();
         
         CheckForDashInput();
+        
+        if(Input.GetKeyDown(KeyCode.F))
+            Skill.crystal.UseSkill();
     }
 
     public void AssignNewSword(GameObject newSword)
