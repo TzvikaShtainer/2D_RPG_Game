@@ -16,10 +16,12 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     private bool canShrink;
     private bool canCreateHotKey = true;
     private bool cloneAttackReleased;
+    private bool playerCanDisappear = true;
 
     private int amountOfAttacks;
     private float cloneAttackCooldown;
     private float cloneAttackTimer;
+    private float blackHoleTimer;
     
     private List<Transform> targets = new List<Transform>();
     private List<GameObject> createdHotKeys = new List<GameObject>();
@@ -29,6 +31,15 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     private void Update()
     {
         cloneAttackTimer -= Time.deltaTime;
+        blackHoleTimer -= Time.deltaTime;
+
+        if (blackHoleTimer < 0)
+        {
+            if (targets.Count > 0)
+                ReleaseCloneAttack();
+            else
+                FinishBlackHoleAbility();
+        }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -51,26 +62,35 @@ public class BlackHole_Skill_Controller : MonoBehaviour
         }
     }
 
-    public void SetupBlackHole(float maxSize, float growSpeed, float shrinkSpeed, int amountOfAttacks, float cloneAttackCooldown)
+    public void SetupBlackHole(float maxSize, float growSpeed, float shrinkSpeed, int amountOfAttacks, float cloneAttackCooldown, float blackHoleDuration)
     {
         this.maxSize = maxSize;
         this.growSpeed = growSpeed;
         this.shrinkSpeed = shrinkSpeed;
         this.amountOfAttacks = amountOfAttacks;
         this.cloneAttackCooldown = cloneAttackCooldown;
+        
+        blackHoleTimer = blackHoleDuration;
     }
     private void ReleaseCloneAttack()
     {
+        if(targets.Count <= 0)
+            return;
+        
         DestroyHotKeys(); //destroy the hot keys that we make on top the enemies
         cloneAttackReleased = true;
         canCreateHotKey = false;
-        
-        PlayerManager.instance.player.MakeTransparent(true);
+
+        if (playerCanDisappear)
+        {
+            playerCanDisappear = false;
+            PlayerManager.instance.player.MakeTransparent(true);
+        }
     }
 
     private void CloneAttackLogic()
     {
-        if (cloneAttackTimer <= 0 && cloneAttackReleased)
+        if (cloneAttackTimer <= 0 && cloneAttackReleased && amountOfAttacks > 0)
         {
             cloneAttackTimer = cloneAttackCooldown;
 
@@ -93,8 +113,8 @@ public class BlackHole_Skill_Controller : MonoBehaviour
 
     private void FinishBlackHoleAbility()
     {
+        DestroyHotKeys();
         PlayerCanExitState = true;
-        PlayerManager.instance.player.ExitBlackHoleAbility();
         canShrink = true;
         cloneAttackReleased = false;
     }

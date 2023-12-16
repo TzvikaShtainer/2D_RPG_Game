@@ -121,9 +121,16 @@ public class Entity : MonoBehaviour
 
     public void MakeTransparent(bool transparent)
     {
-        if(transparent)
+        Debug.Log(transparent);
+        if (transparent)
+        {
             Sr.color = Color.clear;
+            Debug.Log("Sr.color " +Sr.color);
+        }
         else
+        {
             Sr.color = Color.white;
+            Debug.Log("Sr.color " +Sr.color);
+        }
     }
 }

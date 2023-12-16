@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class BlackHole_Skill : Skill
 {
-    [SerializeField] private float maxSize;
-    [SerializeField] private float growSpeed;
-    [Space]
-    [SerializeField] private GameObject blackHolePrefab;
-    [SerializeField] private float shrinkSpeed;
     [SerializeField] private int amountOfAttacks;
     [SerializeField] private float cloneAttackCooldown = 0.3f;
+    [SerializeField] private float blackHoleDuration;
+    [Space]
+    [SerializeField] private GameObject blackHolePrefab;
+    [SerializeField] private float maxSize;
+    [SerializeField] private float growSpeed;
+    [SerializeField] private float shrinkSpeed;
 
     private BlackHole_Skill_Controller currentBlackHole;
 
@@ -41,7 +42,7 @@ public class BlackHole_Skill : Skill
     {
         GameObject newBlackHole = Instantiate(blackHolePrefab, Player.transform.position, Quaternion.identity);
         currentBlackHole = newBlackHole.GetComponent<BlackHole_Skill_Controller>();
-        currentBlackHole.SetupBlackHole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown);
+        currentBlackHole.SetupBlackHole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown, blackHoleDuration);
     }
 
     public bool BlackHoleCompleted()
