@@ -7,7 +7,8 @@ public class Entity : MonoBehaviour
 {
     public Animator Anim { get; private set; }
     public Rigidbody2D Rb { get; private set; }
-    public EntityFX fx { get; private set; }
+    public EntityFX Fx { get; private set; }
+    public SpriteRenderer Sr{ get; private set; }
 
     [Header("Knock-back Info")]
     [SerializeField] private Vector2 knockBackDirection;
@@ -35,9 +36,10 @@ public class Entity : MonoBehaviour
 
     protected virtual void Start()
     {
+        Sr = GetComponentInChildren<SpriteRenderer>();
         Anim = GetComponentInChildren<Animator>();
         Rb = GetComponent<Rigidbody2D>();
-        fx = GetComponent<EntityFX>();
+        Fx = GetComponent<EntityFX>();
     }
 
     protected virtual void Update()
@@ -47,7 +49,7 @@ public class Entity : MonoBehaviour
 
     public virtual void Damage()
     {
-        fx.StartCoroutine("FlashFX");
+        Fx.StartCoroutine("FlashFX");
         
         StartCoroutine(nameof(HitKnockBack));
     }
@@ -116,4 +118,12 @@ public class Entity : MonoBehaviour
     }
 
     #endregion
+
+    public void MakeTransparent(bool transparent)
+    {
+        if(transparent)
+            Sr.color = Color.clear;
+        else
+            Sr.color = Color.white;
+    }
 }
