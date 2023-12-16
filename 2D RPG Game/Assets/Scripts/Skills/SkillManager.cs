@@ -12,6 +12,7 @@ public class SkillManager : MonoBehaviour
     public Dash_Skill Dash { get; private set; }
     public Sword_Skill Sword { get; private set; }
     public BlackHole_Skill blackHole { get; private set; }
+    public Crystal_Skill crystal{ get; private set; }
 
     private void Awake()
     {
@@ -27,5 +28,6 @@ public class SkillManager : MonoBehaviour
         Dash = GetComponent<Dash_Skill>();
         Sword = GetComponent<Sword_Skill>();
         blackHole = GetComponent<BlackHole_Skill>();
+        crystal = GetComponent<Crystal_Skill>();
     }
 }
