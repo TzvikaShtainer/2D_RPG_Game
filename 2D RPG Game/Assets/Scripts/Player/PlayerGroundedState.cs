@@ -20,13 +20,13 @@ public class PlayerGroundedState : PlayerState
     {
         base.Update();
 
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.C))
             StateMachine.ChangeState(Player.blackHoleState);
         
         if(Input.GetKeyDown(KeyCode.Mouse1) && HaNoSword())
             StateMachine.ChangeState(Player.AimSwordState);
         
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.GetKeyDown(KeyCode.X))
             StateMachine.ChangeState(Player.CounterAttackState);
             
         if(Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Z))
