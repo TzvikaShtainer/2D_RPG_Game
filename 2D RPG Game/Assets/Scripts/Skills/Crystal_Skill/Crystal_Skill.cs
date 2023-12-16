@@ -6,9 +6,15 @@ using UnityEngine;
 public class Crystal_Skill : Skill
 {
     [SerializeField] private GameObject crystalPrefab;
+    [SerializeField] private float crystalDuration;
     private GameObject currentCrystal;
 
-    [SerializeField] private float crystalDuration;
+    [Header("Explosive Crystal")]
+    [SerializeField] private bool canExplode;
+
+    [Header("Moving Crystal")]
+    [SerializeField] private bool canMoveToEnemy;
+    [SerializeField] private float moveSpeed;
 
     public override void UseSkill()
     {
@@ -19,12 +25,15 @@ public class Crystal_Skill : Skill
             currentCrystal = Instantiate(crystalPrefab, Player.transform.position, Quaternion.identity);
             Crystal_Skill_Controller currentCrystalScript = currentCrystal.GetComponent<Crystal_Skill_Controller>();
             
-            currentCrystalScript.SetupCrystal(crystalDuration);
+            currentCrystalScript.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed);
         }
         else
         {
+            Vector2 playerPos = Player.transform.position;
             Player.transform.position = currentCrystal.transform.position;
-            Destroy(currentCrystal);
+            currentCrystal.transform.position = playerPos;
+            
+            currentCrystal.GetComponent<Crystal_Skill_Controller>()?.FinishCrystal();
         }
     }
 }

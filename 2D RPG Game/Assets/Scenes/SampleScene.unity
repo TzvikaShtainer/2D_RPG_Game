@@ -974,6 +974,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   crystalPrefab: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
+  crystalDuration: 2
+  canExplode: 1
+  canMoveToEnemy: 0
+  moveSpeed: 0
 --- !u!1 &481880328
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,6 +6123,10 @@ PrefabInstance:
     - target: {fileID: 2904207947042113350, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943075276577176859, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
