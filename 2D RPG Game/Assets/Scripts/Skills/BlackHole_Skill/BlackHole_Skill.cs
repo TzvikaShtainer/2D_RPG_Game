@@ -37,7 +37,7 @@ public class BlackHole_Skill : Skill
 
     private void CreateBlackHole ()
     {
-        GameObject newBlackHole = Instantiate(blackHolePrefab);
+        GameObject newBlackHole = Instantiate(blackHolePrefab, Player.transform.position, Quaternion.identity);
         BlackHole_Skill_Controller blackHoleSkillController = newBlackHole.GetComponent<BlackHole_Skill_Controller>();
         blackHoleSkillController.SetupBlackHole(maxSize, growSpeed, shrinkSpeed, amountOfAttacks, cloneAttackCooldown);
     }

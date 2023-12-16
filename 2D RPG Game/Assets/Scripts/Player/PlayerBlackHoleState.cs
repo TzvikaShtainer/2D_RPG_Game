@@ -6,7 +6,8 @@ public class PlayerBlackHoleState : PlayerState
 {
     private float flyTime = 0.4f;
     private bool skillUsed;
-    
+
+    private float defaultGravity;
     public PlayerBlackHoleState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
@@ -17,14 +18,16 @@ public class PlayerBlackHoleState : PlayerState
 
         skillUsed = false;
         stateTimer = flyTime;
+
+        defaultGravity = Player.Rb.gravityScale;
         Rb.gravityScale = 0;
     }
 
     public override void Exit()
     {
         base.Exit();
-        
-        Rb.gravityScale = 1;
+
+        Player.Rb.gravityScale = defaultGravity;
     }
 
     public override void Update()
@@ -42,8 +45,11 @@ public class PlayerBlackHoleState : PlayerState
 
             if (!skillUsed)
             {
-                skillUsed = true;
+                if(Player.Skill.blackHole.CanUseSkill())
+                    skillUsed = true;
             }
         }
     }
+    
+    //we exit state in black hole skill controller when all of the attacks are over
 }

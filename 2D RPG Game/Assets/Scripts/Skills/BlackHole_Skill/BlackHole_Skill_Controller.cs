@@ -82,6 +82,7 @@ public class BlackHole_Skill_Controller : MonoBehaviour
 
             if (amountOfAttacks <= 0)
             {
+                PlayerManager.instance.player.ExitBlackHoleAbility();
                 canShrink = true;
                 cloneAttackReleased = false;
             }
