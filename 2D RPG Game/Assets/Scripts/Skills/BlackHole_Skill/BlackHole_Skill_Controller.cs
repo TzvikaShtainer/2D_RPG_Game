@@ -23,6 +23,8 @@ public class BlackHole_Skill_Controller : MonoBehaviour
     
     private List<Transform> targets = new List<Transform>();
     private List<GameObject> createdHotKeys = new List<GameObject>();
+    
+    public bool PlayerCanExitState { get; private set; }
 
     private void Update()
     {
@@ -91,6 +93,7 @@ public class BlackHole_Skill_Controller : MonoBehaviour
 
     private void FinishBlackHoleAbility()
     {
+        PlayerCanExitState = true;
         PlayerManager.instance.player.ExitBlackHoleAbility();
         canShrink = true;
         cloneAttackReleased = false;

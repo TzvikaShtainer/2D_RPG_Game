@@ -50,7 +50,8 @@ public class PlayerBlackHoleState : PlayerState
                     skillUsed = true;
             }
         }
+
+        if (Player.Skill.blackHole.BlackHoleCompleted())
+            StateMachine.ChangeState(Player.AirState);
     }
-    
-    //we exit state in black hole skill controller when all of the attacks are over
 }
