@@ -15,6 +15,10 @@ public class Clone_Skill_Controller : MonoBehaviour
     [SerializeField] private float attackCheckRadius = 0.8f;
     private Transform closestEnemy;
 
+    [SerializeField] private bool canDuplicateClone;
+    private float chanceToDuplicate;
+    private int facingDir = 1;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -34,7 +38,7 @@ public class Clone_Skill_Controller : MonoBehaviour
         }
     }
 
-    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy)
+    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy, bool canDuplicateClone, float changeToDuplicate)
     {
         if (canAttack)
             anim.SetInteger("AttackNumber", Random.Range(1, 3));
@@ -44,6 +48,9 @@ public class Clone_Skill_Controller : MonoBehaviour
 
         this.closestEnemy = closestEnemy;
         FaceClosestTarget();
+
+        this.canDuplicateClone = canDuplicateClone;
+        this.chanceToDuplicate = changeToDuplicate;
     }
     
     private void AnimationTrigger()
@@ -58,7 +65,17 @@ public class Clone_Skill_Controller : MonoBehaviour
         foreach (var hit in colliders)
         {
             if (hit.GetComponent<Enemy.Enemy>() != null)
+            {
                 hit.GetComponent<Enemy.Enemy>().Damage();
+
+                if (canDuplicateClone)
+                {
+                    if (Random.Range(1, 100) < chanceToDuplicate)
+                    {
+                        SkillManager.instance.Clone.CreateClone(hit.transform, new Vector3(0.5f * facingDir, 0));
+                    }
+                }
+            }
         }
     }
     
@@ -66,8 +83,11 @@ public class Clone_Skill_Controller : MonoBehaviour
     {
         if (closestEnemy != null)
         {
-            if(transform.position.x > closestEnemy.position.x)
+            if (transform.position.x > closestEnemy.position.x)
+            {
                 transform.Rotate(0, 180, 0);
+                facingDir = -1;
+            }
         }
     }
 }
