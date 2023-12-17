@@ -9,6 +9,9 @@ public class Crystal_Skill : Skill
     [SerializeField] private float crystalDuration;
     private GameObject currentCrystal;
 
+    [Header("Crystal Mirage")]
+    [SerializeField] private bool canCloneInsteadOfCrystal;
+    
     [Header("Explosive Crystal")]
     [SerializeField] private bool canExplode;
 
@@ -44,7 +47,13 @@ public class Crystal_Skill : Skill
             
             SwitchPlaceWithCrystal();
 
-            currentCrystal.GetComponent<Crystal_Skill_Controller>()?.FinishCrystal();
+            if (canCloneInsteadOfCrystal)
+            {
+                SkillManager.instance.Clone.CreateClone(currentCrystal.transform, Vector3.zero);
+                Destroy(currentCrystal);
+            }
+            else
+                currentCrystal.GetComponent<Crystal_Skill_Controller>()?.FinishCrystal();
         }
     }
 
