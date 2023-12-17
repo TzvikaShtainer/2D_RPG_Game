@@ -96,7 +96,7 @@ public class Player : Entity
         CheckForDashInput();
         
         if(Input.GetKeyDown(KeyCode.S))
-            Skill.crystal.UseSkill();
+            Skill.crystal.CanUseSkill();
     }
 
     public void AssignNewSword(GameObject newSword)

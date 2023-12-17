@@ -18,8 +18,9 @@ public class Crystal_Skill : Skill
 
     [Header("Multi Stacking Crystal")] 
     [SerializeField] private bool canUseMultiStacks;
-    [SerializeField] private float amountOfCrystals;
+    [SerializeField] private int amountOfCrystals;
     [SerializeField] private float multiCrystalCooldown;
+    [SerializeField] private float useTimeWindow;
     [SerializeField] private List<GameObject> crystalsLeft = new List<GameObject>();
 
     public override void UseSkill()
@@ -58,8 +59,13 @@ public class Crystal_Skill : Skill
     {
         if (canUseMultiStacks)
         {
+            if (crystalsLeft.Count == amountOfCrystals)
+                Invoke(nameof(ResetAbility), useTimeWindow);
+            
             if (crystalsLeft.Count > 0)
             {
+                cooldown = 0;
+                
                 GameObject crystalToSpawn = crystalsLeft[crystalsLeft.Count - 1];
                 GameObject newCrystal = Instantiate(crystalToSpawn, Player.transform.position, Quaternion.identity);
                 
@@ -70,21 +76,33 @@ public class Crystal_Skill : Skill
 
                 if (crystalsLeft.Count <= 0)
                 {
-                    //colldown skill
-                    //refill Crystals
+                    cooldown = multiCrystalCooldown;
+                    RefillCrystals();
                 }
+                
+                return true;
             }
-            
-            return true;
         }
 
         return false;
     }
+    
     private void RefillCrystals()
     {
-        for (int i = 0; i < amountOfCrystals; i++)
+        int amountToAdd = amountOfCrystals - crystalsLeft.Count;
+        
+        for (int i = 0; i < amountToAdd; i++)
         {
             crystalsLeft.Add(crystalPrefab);
         }
+    }
+    
+    private void ResetAbility()
+    {
+        if(cooldownTimer > 0)
+            return;
+        
+        cooldownTimer = multiCrystalCooldown;
+        RefillCrystals();
     }
 }
