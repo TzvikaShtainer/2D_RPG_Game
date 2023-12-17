@@ -976,8 +976,8 @@ MonoBehaviour:
   crystalPrefab: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
   crystalDuration: 2
   canExplode: 1
-  canMoveToEnemy: 0
-  moveSpeed: 0
+  canMoveToEnemy: 1
+  moveSpeed: 1
 --- !u!1 &481880328
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,13 +6080,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1451475203866394921, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
-      propertyPath: growSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
       propertyPath: m_Name
       value: Crystal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2904207947042113350, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
       propertyPath: m_LocalPosition.x
