@@ -7,11 +7,13 @@ public class CloneSkill : Skill
     [Header("Clone Info")]
     [SerializeField] private GameObject clonePrefab;
     [SerializeField] private float cloneDuration = 1.5f;
+    [SerializeField] private float delayForCloneSpawn = 0.4f;
     [Space]
     [SerializeField] private bool canAttack;
 
     [SerializeField] private bool canCreateCloneOnDashStart;
     [SerializeField] private bool canCreateCloneOnDashOver;
+    [SerializeField] private bool canCreateCloneOnCounterAttack;
     
     public void CreateClone(Transform clonePosition, Vector3 offset)
     {
@@ -30,5 +32,18 @@ public class CloneSkill : Skill
     {
         if(canCreateCloneOnDashOver)
             CreateClone(Player.transform, Vector3.zero);
+    }
+    
+    public void CanCreateCloneOnCounterAttack(Transform enemy)
+    {
+        if (canCreateCloneOnCounterAttack)
+            StartCoroutine(CreateCloneWithDelay(enemy, new Vector3(2 * Player.FacingDir, 0, 0)));
+
+    }
+
+    private IEnumerator CreateCloneWithDelay(Transform transform, Vector3 offset)
+    {
+        yield return new WaitForSeconds(delayForCloneSpawn);
+        CreateClone(transform, offset);
     }
 }
