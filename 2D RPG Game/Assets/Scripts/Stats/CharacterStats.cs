@@ -22,6 +22,18 @@ public class CharacterStats : MonoBehaviour
     public Stats maxHealth;
     public Stats armor;
     public Stats evasion;
+    public Stats magicResistance;
+
+    [Header("Magic Stats")]
+    public Stats fireDamage;
+    public Stats iceDamage;
+    public Stats lightingDamage;
+
+    public bool isIgnited;
+    public bool isChilled;
+    public bool isShocked;
+    
+    
 
     [SerializeField] private int currentHealth;
 
@@ -46,6 +58,7 @@ public class CharacterStats : MonoBehaviour
         totalDamage = CalcTargetArmor(targetStats, totalDamage);
         
         targetStats.TakeDamage(totalDamage);
+        //DoMagicDamage(targetStats);
     }
 
     private bool TargetCanAvoidAttack(CharacterStats targetStats)
@@ -86,6 +99,35 @@ public class CharacterStats : MonoBehaviour
         return Mathf.RoundToInt(critDamage);
     }
 
+    public virtual void DoMagicDamage(CharacterStats targetStats)
+    {
+        int _fireDamage = fireDamage.GetBaseValue();
+        int _iceDamage = iceDamage.GetBaseValue();
+        int _lightingDamage = lightingDamage.GetBaseValue();
+
+        int totalMagicDamage = _fireDamage + _iceDamage + _lightingDamage + intelligence.GetBaseValue();
+
+        totalMagicDamage = CalcMagicResistance(targetStats, totalMagicDamage);
+        targetStats.TakeDamage(totalMagicDamage);
+    }
+
+    private static int CalcMagicResistance(CharacterStats targetStats, int totalMagicDamage)
+    {
+        totalMagicDamage -= targetStats.magicResistance.GetBaseValue() + (targetStats.intelligence.GetBaseValue() * 3); //get 3 on every intelligence point, need to make this varible
+        totalMagicDamage = Mathf.Clamp(totalMagicDamage, 0, int.MaxValue);
+        return totalMagicDamage;
+    }
+
+    public virtual void ApplyElements(bool isIgnited, bool isChilled, bool isShocked)
+    {
+        if(this.isIgnited || this.isChilled || this.isShocked)
+            return;
+
+        this.isIgnited = isIgnited;
+        this.isChilled = isChilled;
+        this.isShocked = isShocked;
+    }
+    
     public virtual void TakeDamage(int _damage)
     {
         currentHealth -= _damage;
