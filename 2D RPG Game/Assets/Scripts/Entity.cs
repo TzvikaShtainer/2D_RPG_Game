@@ -10,6 +10,7 @@ public class Entity : MonoBehaviour
     public EntityFX Fx { get; private set; }
     public SpriteRenderer Sr{ get; private set; }
     public CharacterStats Stats{ get; private set; }
+    public CapsuleCollider2D Cd{ get; private set; }
 
     [Header("Knock-back Info")]
     [SerializeField] private Vector2 knockBackDirection;
@@ -42,6 +43,7 @@ public class Entity : MonoBehaviour
         Rb = GetComponent<Rigidbody2D>();
         Fx = GetComponent<EntityFX>();
         Stats = GetComponent<CharacterStats>();
+        Cd = GetComponent<CapsuleCollider2D>();
     }
 
     protected virtual void Update()

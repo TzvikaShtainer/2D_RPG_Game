@@ -28,6 +28,7 @@ namespace Enemy
         [HideInInspector] public float lastTimeAttacked;
         
         public EnemyStateMachine StateMachine { get; private set; }
+        public string lastAnimBoolName{ get; private set; }
         
         protected override void Awake()
         {
@@ -47,6 +48,11 @@ namespace Enemy
             //Debug.Log(IsPlayerDetected().collider.gameObject.name);
         }
 
+        public virtual void AssignLastAnimName(string lastName)
+        {
+            lastAnimBoolName = lastName;
+        }
+        
         public virtual void FreezeTime(bool timeFrozen)
         {
             if (timeFrozen)

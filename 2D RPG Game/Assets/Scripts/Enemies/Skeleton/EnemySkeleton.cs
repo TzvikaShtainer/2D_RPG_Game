@@ -12,6 +12,7 @@ namespace Enemy
         public EnemySkeletonBattleState SkeletonBattleState { get; private set; }
         public EnemySkeletonAttackState SkeletonAttackState { get; private set; }
         public EnemySkeletonStunnedState SkeletonStunnedState { get; private set; }
+        public EnemySkeletonDeadState SkeletonDeadState { get; private set; }
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace Enemy
             SkeletonBattleState = new EnemySkeletonBattleState(this, StateMachine, "Move", this); //cuz he moves to the player until attack
             SkeletonAttackState = new EnemySkeletonAttackState(this, StateMachine, "Attack", this);
             SkeletonStunnedState = new EnemySkeletonStunnedState(this, StateMachine, "Stunned", this);
+            SkeletonDeadState = new EnemySkeletonDeadState(this, StateMachine, "Idle", this);
         }
 
         protected override void Start()
@@ -52,6 +54,13 @@ namespace Enemy
             }
 
             return false;
+        }
+
+        public override void Die()
+        {
+            base.Die();
+            
+            StateMachine.ChangeState(SkeletonDeadState);
         }
     }
 }

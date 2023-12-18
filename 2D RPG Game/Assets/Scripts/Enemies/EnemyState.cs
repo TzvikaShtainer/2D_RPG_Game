@@ -34,6 +34,7 @@ namespace Enemy
         public virtual void Exit()
         { 
             EnemyBase.Anim.SetBool(animBoolName, false);
+            EnemyBase.AssignLastAnimName(animBoolName);
         }
 
         public virtual void AnimationFinishTrigger()
