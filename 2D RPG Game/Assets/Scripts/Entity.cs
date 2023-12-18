@@ -135,4 +135,9 @@ public class Entity : MonoBehaviour
             Debug.Log("Sr.color " +Sr.color);
         }
     }
+
+    public virtual void Die()
+    {
+        
+    }
 }
