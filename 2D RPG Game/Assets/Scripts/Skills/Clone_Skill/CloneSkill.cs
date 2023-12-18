@@ -20,7 +20,7 @@ public class CloneSkill : Skill
     [SerializeField] private float chanceToDuplicate;
     
     [Header("Crystal Duplicate")]
-    [SerializeField] private bool canCrystalInsteadOfClone;
+    public bool canCrystalInsteadOfClone;
     
     public void CreateClone(Transform clonePosition, Vector3 offset)
     {

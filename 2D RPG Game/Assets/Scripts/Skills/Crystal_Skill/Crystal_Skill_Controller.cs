@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Crystal_Skill_Controller : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Crystal_Skill_Controller : MonoBehaviour
     [SerializeField] private float maxSize = 3;
     
     private Transform closestEnemy;
+    [SerializeField] private LayerMask whatIsEnemy;
     
 
     public void SetupCrystal(float crystalDuration, bool canExplode, bool canMoveToEnemy, float moveSpeed, Transform closestEnemy)
@@ -78,6 +80,15 @@ public class Crystal_Skill_Controller : MonoBehaviour
             }
         }
     }
-    
+
+    public void ChooseRandomEnemy()
+    {
+        float radius = SkillManager.instance.blackHole.GetBlackHoleRadius();
+        
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, whatIsEnemy);
+
+        if (hits.Length > 0)
+            closestEnemy = hits[Random.Range(0, hits.Length)].transform;
+    }
     private void SelfDestroy() => Destroy(gameObject);
 }
