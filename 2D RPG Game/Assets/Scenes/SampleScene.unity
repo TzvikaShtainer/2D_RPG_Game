@@ -1976,16 +1976,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5718c7809c3d16c4f91137b046d80f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   strength:
+    baseValue: 0
+    modifiers: 
+  agility:
+    baseValue: 0
+    modifiers: 
+  intelligence:
+    baseValue: 0
+    modifiers: 
+  vitality:
     baseValue: 0
     modifiers: 
   damage:
     baseValue: 5
     modifiers: 
-  maxHealth:
-    baseValue: 1
+  critPower:
+    baseValue: 0
     modifiers: 
+  critChance:
+    baseValue: 50
+    modifiers: 
+  maxHealth:
+    baseValue: 1000
+    modifiers: 
+  armor:
+    baseValue: 0
+    modifiers: 
+  evasion:
+    baseValue: 80
+    modifiers: 
+  currentHealth: 0
 --- !u!1 &825471085
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,16 +2656,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2522b48567df1140b28444b05d023c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
   strength:
+    baseValue: 0
+    modifiers: 
+  agility:
+    baseValue: 0
+    modifiers: 
+  intelligence:
+    baseValue: 0
+    modifiers: 
+  vitality:
     baseValue: 0
     modifiers: 
   damage:
     baseValue: 5
     modifiers: 
-  maxHealth:
-    baseValue: 100
+  critPower:
+    baseValue: 0
     modifiers: 
+  critChance:
+    baseValue: 99
+    modifiers: 
+  maxHealth:
+    baseValue: 5
+    modifiers: 
+  armor:
+    baseValue: 0
+    modifiers: 
+  evasion:
+    baseValue: 0
+    modifiers: 
+  currentHealth: 0
 --- !u!70 &1038193141
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
