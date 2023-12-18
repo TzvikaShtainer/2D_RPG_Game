@@ -199,7 +199,7 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy.Enemy enemy)
     {
-        enemy.Damage();
+        enemy.DamageEffects();
         
         if(isSpinning)
             return;
