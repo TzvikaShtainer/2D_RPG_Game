@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int damage;
-    public int currentHealth;
+    [SerializeField] private int currentHealth;
+    
+    [Space]
+    public Stats damage;
+    public Stats maxHealth;
 
-    [SerializeField] private int maxHealth;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = maxHealth.GetBaseValue();
     }
 
-    public void TakeDamage(int _damage)
+    public virtual void TakeDamage(int _damage)
     {
         currentHealth -= _damage;
 
@@ -25,7 +27,7 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    private void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }
