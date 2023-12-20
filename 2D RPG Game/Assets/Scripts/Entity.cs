@@ -30,6 +30,11 @@ public class Entity : MonoBehaviour
     
     public int FacingDir { get; private set; } = 1;
     protected bool FacingRight = true;
+
+    //public Action onFlipped;
+
+    public delegate void OnFlipped();
+    public event OnFlipped onFlipped;
     
     protected virtual void Awake()
     {
@@ -100,6 +105,8 @@ public class Entity : MonoBehaviour
         FacingDir = FacingDir * -1;
         FacingRight = !FacingRight;
         transform.Rotate(0, 180, 0);
+        
+        onFlipped?.Invoke();
     }
     #endregion
     

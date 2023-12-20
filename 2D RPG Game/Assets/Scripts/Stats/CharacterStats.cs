@@ -43,12 +43,15 @@ public class CharacterStats : MonoBehaviour
     private int ignitedDamage;
     
 
-    [SerializeField] private int currentHealth;
+    public int currentHealth;
+
+    public delegate void OnHealthChanged();
+    public event OnHealthChanged onHealthChanged;
 
     protected virtual void Start()
     {
         critPower.SetDefaultValue(150);
-        currentHealth = maxHealth.GetBaseValue();
+        currentHealth = GetMaxHealthValue();
     }
 
     protected virtual void Update()
@@ -76,7 +79,7 @@ public class CharacterStats : MonoBehaviour
         if (ignitedDamageTimer < 0 && isIgnited)
         {
             ignitedDamageTimer = ignitedDamageCooldown;
-            currentHealth -= ignitedDamage;
+            DecreaseHealth(ignitedDamage);
             
             if (currentHealth <= 0)
             {
@@ -232,7 +235,7 @@ public class CharacterStats : MonoBehaviour
     
     public virtual void TakeDamage(int _damage)
     {
-        currentHealth -= _damage;
+        DecreaseHealth(_damage);
 
         if (currentHealth < 0)
         {
@@ -240,8 +243,19 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public virtual void DecreaseHealth(int _damage)
+    {
+        currentHealth -= _damage;
+        onHealthChanged?.Invoke();
+    }
+
     public virtual void Die()
     {
         
+    }
+
+    public int GetMaxHealthValue()
+    {
+        return maxHealth.GetBaseValue() + vitality.GetBaseValue() * 5;
     }
 }
