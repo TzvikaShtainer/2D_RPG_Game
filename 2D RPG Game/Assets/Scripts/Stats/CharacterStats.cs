@@ -55,6 +55,9 @@ public class CharacterStats : MonoBehaviour
     public bool isShocked; //reduce accuracy by 20%
     [SerializeField] private float shockDuration = 4;
     private float ShockedTimer;
+    [SerializeField] private GameObject shockStrikePrefab;
+    private int shockDamage;
+    
     
     //make elements Generic
     
@@ -68,8 +71,6 @@ public class CharacterStats : MonoBehaviour
     {
         critPower.SetDefaultValue(150);
         currentHealth = GetMaxHealthValue();
-
-        
     }
 
     protected virtual void Start()
@@ -113,7 +114,8 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
-    public void SetupIgniteDamage(int _damage) => ignitedDamage = _damage; 
+    public void SetupIgniteDamage(int _damage) => ignitedDamage = _damage;
+    public void SetupShockDamage(int _damage) => shockDamage = _damage;
     public virtual void DoDamage(CharacterStats targetStats)
     {
         if (TargetCanAvoidAttack(targetStats))
@@ -224,6 +226,9 @@ public class CharacterStats : MonoBehaviour
         if(canApplyIgnite)
             targetStats.SetupIgniteDamage(Mathf.RoundToInt(_fireDamage * 0.2f));
         
+        if(canApplyShock)
+            targetStats.SetupShockDamage(Mathf.RoundToInt(_lightingDamage * 0.1f));
+        
         targetStats.ApplyElements(canApplyIgnite, canApplyChill, canApplyShock);
     }
 
@@ -234,22 +239,23 @@ public class CharacterStats : MonoBehaviour
         return totalMagicDamage;
     }
 
-    public virtual void ApplyElements(bool _isIgnited, bool _isChilled, bool _isShocked)
+    public virtual void ApplyElements(bool _ignite, bool _chill, bool _shock)
     {
-        if(isIgnited || isChilled || isShocked)
-            return;
+        bool canApplyIgnite = !isIgnited && !isChilled  && !isShocked;
+        bool canApplyChill = !isIgnited && !isChilled  && !isShocked;
+        bool canApplyShock = !isIgnited && !isChilled;
 
-        if (_isIgnited)
+        if (_ignite && canApplyIgnite)
         {
-            isIgnited = _isIgnited;
+            isIgnited = _ignite;
             ignitedTimer = igniteDuration;
             
             fx.IgniteFxFor(igniteDuration);
         }
         
-        if (_isChilled)
+        if (_chill && canApplyChill)
         {
-            isChilled = _isChilled;
+            isChilled = _chill;
             ChilledTimer = chillDuration;
             
             GetComponent<Entity>().SlowEntityBy(slowPercentage, chillDuration);
@@ -257,15 +263,65 @@ public class CharacterStats : MonoBehaviour
             
         }
         
-        if (_isShocked)
+        if (_shock && canApplyShock)
         {
-            isShocked = _isShocked;
-            ShockedTimer = shockDuration;
-            
-            fx.ShockFxFor(shockDuration);
+            if (!isShocked)
+            {
+                ApplyShock(_shock);
+            }
+            else
+            {
+                if(GetComponent<Player>() != null)
+                    return;
+
+                HitClosestTargetWithShockStrike();
+            }
         }   
     }
-    
+
+    public void ApplyShock(bool _shock)
+    {
+        if(isShocked)
+            return;
+        
+        isShocked = _shock;
+        ShockedTimer = shockDuration;
+            
+        fx.ShockFxFor(shockDuration);
+    }
+
+    private void HitClosestTargetWithShockStrike()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 25);
+        
+        float closestTarget = Mathf.Infinity;
+        Transform closestEnemy = null;
+
+        foreach (var hit in colliders)
+        {
+            if (hit.GetComponent<Enemy.Enemy>() != null && Vector2.Distance(transform.position, hit.transform.position) > 1)
+            {
+                float distanceToEnemy = Vector2.Distance(transform.position, hit.transform.position);
+
+                if (distanceToEnemy < closestTarget)
+                {
+                    closestTarget = distanceToEnemy;
+                    closestEnemy = hit.transform;
+                }
+            }
+
+            if (closestEnemy == null)
+                closestEnemy = transform; //thunder the same enemy we attack
+        }
+
+        if (closestEnemy != null)
+        {
+            GameObject newShockStrike = Instantiate(shockStrikePrefab, transform.position, Quaternion.identity);
+                    
+            newShockStrike.GetComponent<ShockStrikeController>().Setup(shockDamage, closestEnemy.GetComponent<CharacterStats>());
+        }
+    }
+
     public virtual void TakeDamage(int _damage)
     {
         DecreaseHealth(_damage);

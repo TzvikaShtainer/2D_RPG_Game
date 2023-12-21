@@ -104,6 +104,22 @@ namespace Enemy
             
             return false;
         }
+
+        public override void SlowEntityBy(float slowPercentage, float slowDuration)
+        {
+            moveSpeed = moveSpeed * (1 - slowPercentage);
+            Anim.speed = Anim.speed * (1 - slowPercentage);
+            
+            Invoke("ReturnDefaultSpeed", slowDuration);
+        }
+
+        public override void ReturnDefaultSpeed()
+        {
+            base.ReturnDefaultSpeed();
+            
+            moveSpeed = defaultMoveSpeed;
+        }
+
         protected override void OnDrawGizmos()
         {
             base.OnDrawGizmos();
