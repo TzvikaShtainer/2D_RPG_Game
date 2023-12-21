@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class CharacterStats : MonoBehaviour
 {
+    private EntityFX fx;
+    
     [Header("Major Stats")]
     public Stats strength;
     public Stats agility;
@@ -52,10 +54,13 @@ public class CharacterStats : MonoBehaviour
     {
         critPower.SetDefaultValue(150);
         currentHealth = GetMaxHealthValue();
+
+        
     }
 
     protected virtual void Start()
     {
+        fx = GetComponent<EntityFX>();
         //critPower.SetDefaultValue(150);
         //currentHealth = GetMaxHealthValue();
     }
@@ -224,6 +229,8 @@ public class CharacterStats : MonoBehaviour
         {
             isIgnited = _isIgnited;
             ignitedTimer = 4;
+            
+            fx.IgniteFxFor(ignitedTimer);
         }
         
         if (_isChilled)
