@@ -26,29 +26,35 @@ public class CharacterStats : MonoBehaviour
     public Stats evasion;
     public Stats magicResistance;
 
-    [Header("Magic Stats")]
-    public Stats fireDamage;
-    public Stats iceDamage;
-    public Stats lightingDamage;
+    [Header("Magic Stats")] //make elements Generic
 
+    [Header("Fire")]
+    [Tooltip("damage over time")]
+    public Stats fireDamage;
     public bool isIgnited; //damage over time
     [SerializeField] private float igniteDuration = 4;
     
-    public bool isChilled; //reduce armor by 20%
-    [SerializeField] private float chillDuration = 4;
-    
-    public bool isShocked; //reduce accuracy by 20%
-    [SerializeField] private float shockDuration = 4;
-
-    private float ChilledTimer;
-    private float ShockedTimer;
     private float ignitedTimer;
-    
-    
     private float ignitedDamageCooldown = 0.3f;
     private float ignitedDamageTimer;
     private int ignitedDamage;
     
+    
+    [Header("Ice")]
+    [Tooltip("reduce armor by 20%")]
+    public Stats iceDamage;
+    public bool isChilled; //reduce armor by 20%
+    [SerializeField] private float chillDuration = 4;
+    [SerializeField] private float slowPercentage = 0.3f;
+    private float ChilledTimer;
+    
+    
+    [Header("Lighting")]
+    [Tooltip("reduce accuracy by 20%")]
+    public Stats lightingDamage;
+    public bool isShocked; //reduce accuracy by 20%
+    [SerializeField] private float shockDuration = 4;
+    private float ShockedTimer;
     
     //make elements Generic
     
@@ -246,6 +252,7 @@ public class CharacterStats : MonoBehaviour
             isChilled = _isChilled;
             ChilledTimer = chillDuration;
             
+            GetComponent<Entity>().SlowEntityBy(slowPercentage, chillDuration);
             fx.ChillFxFor(chillDuration);
             
         }

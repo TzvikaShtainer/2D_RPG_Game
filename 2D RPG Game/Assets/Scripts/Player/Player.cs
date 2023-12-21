@@ -20,6 +20,8 @@ public class Player : Entity
     public float moveSpeed = 8f;
     public float jumpForce = 12f;
     public float swordReturnImpact = 7f;
+    private float defaultMoveSpeed;
+    private float defaultJumpForce;
 
     [Header("Dash Info")]
     [SerializeField] private float dashCooldown = 1;
@@ -27,6 +29,7 @@ public class Player : Entity
     public float dashSpeed = 25f;
     public float dashDuration = 0.4f;
     public float DashDir { get; private set; }
+    private float defaultDashSpeed;
 
     public SkillManager Skill { get; private set; }
     public GameObject Sword { get; private set; }
@@ -90,6 +93,10 @@ public class Player : Entity
         Skill = SkillManager.instance;
         
         StateMachine.Initialize(IdleState);
+
+        defaultMoveSpeed = moveSpeed;
+        defaultJumpForce = jumpForce;
+        defaultDashSpeed = dashSpeed;
     }
 
     protected override void Update()
@@ -146,5 +153,24 @@ public class Player : Entity
         base.Die();
         
         StateMachine.ChangeState(deadState);
+    }
+
+    public override void SlowEntityBy(float slowPercentage, float slowDuration)
+    {
+        moveSpeed = moveSpeed * (1 - slowPercentage);
+        jumpForce = jumpForce * (1 - slowPercentage);
+        dashSpeed = dashSpeed * (1 - slowPercentage);
+        Anim.speed = Anim.speed * (1 - slowPercentage);
+        
+        Invoke("ReturnDefaultSpeed", slowDuration);
+    }
+
+    public override void ReturnDefaultSpeed()
+    {
+        base.ReturnDefaultSpeed();
+
+        moveSpeed = defaultMoveSpeed;
+        jumpForce = defaultJumpForce;
+        dashSpeed = defaultDashSpeed;
     }
 }
