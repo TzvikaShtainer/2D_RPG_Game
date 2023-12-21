@@ -32,8 +32,13 @@ public class CharacterStats : MonoBehaviour
     public Stats lightingDamage;
 
     public bool isIgnited; //damage over time
+    [SerializeField] private float igniteDuration = 4;
+    
     public bool isChilled; //reduce armor by 20%
+    [SerializeField] private float chillDuration = 4;
+    
     public bool isShocked; //reduce accuracy by 20%
+    [SerializeField] private float shockDuration = 4;
 
     private float ChilledTimer;
     private float ShockedTimer;
@@ -44,7 +49,10 @@ public class CharacterStats : MonoBehaviour
     private float ignitedDamageTimer;
     private int ignitedDamage;
     
-
+    
+    //make elements Generic
+    
+    
     public int currentHealth;
 
     public delegate void OnHealthChanged();
@@ -228,21 +236,26 @@ public class CharacterStats : MonoBehaviour
         if (_isIgnited)
         {
             isIgnited = _isIgnited;
-            ignitedTimer = 4;
+            ignitedTimer = igniteDuration;
             
-            fx.IgniteFxFor(ignitedTimer);
+            fx.IgniteFxFor(igniteDuration);
         }
         
         if (_isChilled)
         {
             isChilled = _isChilled;
-            ChilledTimer = 4;
+            ChilledTimer = chillDuration;
+            
+            fx.ChillFxFor(chillDuration);
+            
         }
         
         if (_isShocked)
         {
             isShocked = _isShocked;
-            ShockedTimer = 4;
+            ShockedTimer = shockDuration;
+            
+            fx.ShockFxFor(shockDuration);
         }   
     }
     

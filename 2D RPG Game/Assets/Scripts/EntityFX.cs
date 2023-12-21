@@ -15,7 +15,7 @@ public class EntityFX : MonoBehaviour
     
     [Header("Elements Colors")]
     [SerializeField] private Color[] igniteColor;
-    [SerializeField] private Color   chillColor;
+    [SerializeField] private Color[] chillColor;
     [SerializeField] private Color[] shockColor;
     private void Start()
     {
@@ -48,10 +48,24 @@ public class EntityFX : MonoBehaviour
         CancelInvoke();
         sr.color = Color.white;
     }
-
+    
+    
+    //make this generic
     public void IgniteFxFor(float seconds)
     {
         InvokeRepeating("IgniteColorFx", 0, 0.3f);
+        Invoke("CancelColorChange", seconds);
+    }
+    
+    public void ChillFxFor(float seconds)
+    {
+        InvokeRepeating("ChillColorFx", 0, 0.3f);
+        Invoke("CancelColorChange", seconds);
+    }
+    
+    public void ShockFxFor(float seconds)
+    {
+        InvokeRepeating("ShockColorFx", 0, 0.3f);
         Invoke("CancelColorChange", seconds);
     }
     
@@ -62,4 +76,21 @@ public class EntityFX : MonoBehaviour
         else
             sr.color = igniteColor[1];
     }
+    
+    private void ChillColorFx()
+    {
+        if(sr.color != chillColor[0])
+            sr.color = chillColor[0];
+        else
+            sr.color = chillColor[1];
+    }
+    
+    private void ShockColorFx()
+    {
+        if(sr.color != shockColor[0])
+            sr.color = shockColor[0];
+        else
+            sr.color = shockColor[1];
+    }
+    
 }
