@@ -48,10 +48,16 @@ public class CharacterStats : MonoBehaviour
     public delegate void OnHealthChanged();
     public event OnHealthChanged onHealthChanged;
 
-    protected virtual void Start()
+    private void Awake()
     {
         critPower.SetDefaultValue(150);
         currentHealth = GetMaxHealthValue();
+    }
+
+    protected virtual void Start()
+    {
+        //critPower.SetDefaultValue(150);
+        //currentHealth = GetMaxHealthValue();
     }
 
     protected virtual void Update()
@@ -245,6 +251,7 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void DecreaseHealth(int _damage)
     {
+        Debug.Log(_damage);
         currentHealth -= _damage;
         onHealthChanged?.Invoke();
     }
