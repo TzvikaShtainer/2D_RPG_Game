@@ -18,7 +18,7 @@ public class ItemObject : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Player>() != null)
         {
-            Debug.Log("Item " + itemData.name);
+            Inventory.instance.AddItem(itemData);
             Destroy(gameObject);
         }
     }
