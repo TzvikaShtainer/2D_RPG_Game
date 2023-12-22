@@ -39,7 +39,7 @@ namespace Enemy
 
         public virtual void AnimationFinishTrigger()
         {
-            Debug.Log("AnimationFinishTrigger");
+            //Debug.Log("AnimationFinishTrigger");
             triggerCalled = true;
         }
     }

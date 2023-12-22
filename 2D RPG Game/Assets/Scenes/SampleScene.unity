@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 20531308}
   - component: {fileID: 20531309}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  swordType: 0
+  swordType: 2
   hitCooldown: 0.35
   maxDistance: 7
   spinDuration: 2
@@ -1610,7 +1610,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   damage:
-    baseValue: 5
+    baseValue: 20
     modifiers: 
   critPower:
     baseValue: 0

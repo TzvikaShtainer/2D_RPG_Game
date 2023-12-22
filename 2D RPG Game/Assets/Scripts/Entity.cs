@@ -138,21 +138,6 @@ public class Entity : MonoBehaviour
 
     #endregion
 
-    public void MakeTransparent(bool transparent)
-    {
-        Debug.Log(transparent);
-        if (transparent)
-        {
-            Sr.color = Color.clear;
-            Debug.Log("Sr.color " +Sr.color);
-        }
-        else
-        {
-            Sr.color = Color.white;
-            Debug.Log("Sr.color " +Sr.color);
-        }
-    }
-
     public virtual void Die()
     {
         
