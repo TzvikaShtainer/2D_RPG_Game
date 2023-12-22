@@ -130,8 +130,9 @@ public class CharacterStats : MonoBehaviour
         
         totalDamage = CalcTargetArmor(targetStats, totalDamage);
         
-        //targetStats.TakeDamage(totalDamage);
-        DoMagicalDamage(targetStats);
+        targetStats.TakeDamage(totalDamage);
+        
+        //DoMagicalDamage(targetStats);
     }
 
     private bool TargetCanAvoidAttack(CharacterStats targetStats)
@@ -326,6 +327,9 @@ public class CharacterStats : MonoBehaviour
     {
         DecreaseHealth(_damage);
 
+        GetComponent<Entity>().DamageImpact();
+        fx.StartCoroutine("FlashFX");
+        
         if (currentHealth < 0)
         {
             Die();

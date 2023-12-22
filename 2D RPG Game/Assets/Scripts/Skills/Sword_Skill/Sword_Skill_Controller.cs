@@ -199,7 +199,8 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy.Enemy enemy)
     {
-        enemy.DamageEffects();
+        //enemy.DamageEffects();
+        player.Stats.DoDamage(enemy.GetComponent<CharacterStats>());
         
         if(isSpinning)
             return;

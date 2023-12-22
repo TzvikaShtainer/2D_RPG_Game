@@ -22,15 +22,18 @@ public class Crystal_Skill_Controller : MonoBehaviour
     
     private Transform closestEnemy;
     [SerializeField] private LayerMask whatIsEnemy;
+
+    private Player player;
     
 
-    public void SetupCrystal(float crystalDuration, bool canExplode, bool canMoveToEnemy, float moveSpeed, Transform closestEnemy)
+    public void SetupCrystal(float crystalDuration, bool canExplode, bool canMoveToEnemy, float moveSpeed, Transform closestEnemy, Player player)
     {
         crystalExistTimer = crystalDuration;
         this.canExplode = canExplode;
         this.canMoveToEnemy = canMoveToEnemy;
         this.moveSpeed = moveSpeed;
         this.closestEnemy = closestEnemy;
+        this.player = player;
     }
 
     private void Update()
@@ -76,7 +79,8 @@ public class Crystal_Skill_Controller : MonoBehaviour
         {
             if (hit.GetComponent<Enemy.Enemy>() != null)
             {
-                hit.GetComponent<Enemy.Enemy>().DamageEffects();
+                player.Stats.DoMagicalDamage(hit.GetComponent<CharacterStats>());
+                //hit.GetComponent<Enemy.Enemy>().DamageEffects();
             }
         }
     }

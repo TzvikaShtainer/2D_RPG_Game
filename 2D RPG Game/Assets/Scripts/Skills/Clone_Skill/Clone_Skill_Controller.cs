@@ -19,6 +19,8 @@ public class Clone_Skill_Controller : MonoBehaviour
     private float chanceToDuplicate;
     private int facingDir = 1;
 
+    private Player player;
+
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -38,7 +40,7 @@ public class Clone_Skill_Controller : MonoBehaviour
         }
     }
 
-    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy, bool canDuplicateClone, float changeToDuplicate)
+    public void SetupClone(Transform newTransform, float cloneDuration, bool canAttack, Vector3 offset, Transform closestEnemy, bool canDuplicateClone, float changeToDuplicate, Player player)
     {
         if (canAttack)
             anim.SetInteger("AttackNumber", Random.Range(1, 3));
@@ -51,6 +53,7 @@ public class Clone_Skill_Controller : MonoBehaviour
 
         this.canDuplicateClone = canDuplicateClone;
         this.chanceToDuplicate = changeToDuplicate;
+        this.player = player;
     }
     
     private void AnimationTrigger()
@@ -66,7 +69,8 @@ public class Clone_Skill_Controller : MonoBehaviour
         {
             if (hit.GetComponent<Enemy.Enemy>() != null)
             {
-                hit.GetComponent<Enemy.Enemy>().DamageEffects();
+                player.Stats.DoDamage( hit.GetComponent<CharacterStats>());
+                //hit.GetComponent<Enemy.Enemy>().DamageEffects();
 
                 if (canDuplicateClone)
                 {
