@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f4a244716ceca4a9dc57d675bc875e, type: 3}
-  m_Name: Iron
+  m_Script: {fileID: 11500000, guid: 2fdf6b3fb9f58604c873b7c4c31500c0, type: 3}
+  m_Name: Nice Armor
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: Iron
-  icon: {fileID: 1025795234, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemType: 1
+  itemName: Nice Armor
+  icon: {fileID: -1581127718, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  equipmentType: 1
