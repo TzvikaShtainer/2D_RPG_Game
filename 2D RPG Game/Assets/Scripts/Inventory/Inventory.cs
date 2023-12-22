@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Inventory : MonoBehaviour //one inventory that contains a list of items and dict for searching 
 {
@@ -9,6 +10,11 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 
     public List<InventoryItem> inventoryItems; 
     public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+
+
+    [Header("Inventory UI")] 
+    [SerializeField] private Transform inventorySlotParent;
+    private UI_ItemSlot[] itemSlot; 
 
     private void Awake()
     {
@@ -22,6 +28,16 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
     {
         inventoryItems = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
+
+        itemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
+    }
+
+    private void UpdateSlotUI()
+    {
+        for (int i = 0; i < inventoryItems.Count; i++)
+        {
+            itemSlot[i].UpdateSlot(inventoryItems[i]);
+        }
     }
 
     public void AddItem(ItemData _item)
@@ -36,6 +52,8 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
             inventoryItems.Add(newItem);
             inventoryDictionary.Add(_item, newItem);
         }
+        
+        UpdateSlotUI();
     }
 
     public void RemoveItem(ItemData itemToRemove)
@@ -50,5 +68,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
             else
                 value.RemoveStack();
         }
+        
+        UpdateSlotUI();
     }
 }

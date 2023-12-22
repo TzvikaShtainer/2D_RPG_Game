@@ -12,8 +12,12 @@ public class UI_ItemSlot : MonoBehaviour
 
     public InventoryItem item;
 
-    private void Start()
+    public void UpdateSlot(InventoryItem newItem)
     {
+        item = newItem;
+        
+        itemImage.color = Color.white;
+        
         if (item != null)
         {
             itemImage.sprite = item.data.icon;
