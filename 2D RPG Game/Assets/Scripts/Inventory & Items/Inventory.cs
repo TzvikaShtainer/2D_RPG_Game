@@ -179,7 +179,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
         UpdateSlotUI();
     }
 
-    private void UnEquipItem(ItemData_Equipment itemToRemove)
+    public void UnEquipItem(ItemData_Equipment itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {

@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 174949808}
   - component: {fileID: 174949807}
   m_Layer: 10
-  m_Name: Item Object - Nice Armor
+  m_Name: Item Object - Plate Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3248,7 +3248,7 @@ MonoBehaviour:
   chillDuration: 8
   slowPercentage: 0.3
   lightingDamage:
-    baseValue: 10
+    baseValue: 0
     modifiers: 
   isShocked: 0
   shockDuration: 4
@@ -3776,6 +3776,8 @@ MonoBehaviour:
   shockStrikePrefab: {fileID: 3186118064523477167, guid: 674f3fdf6335f454484777699d390725, type: 3}
   shockDamagePercentage: 0.1
   currentHealth: 0
+  level: 7
+  percentageModifier: 0.4
 --- !u!114 &859969986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,6 +4692,8 @@ MonoBehaviour:
   shockStrikePrefab: {fileID: 3186118064523477167, guid: 674f3fdf6335f454484777699d390725, type: 3}
   shockDamagePercentage: 0.1
   currentHealth: 0
+  level: 2
+  percentageModifier: 0.4
 --- !u!70 &1038193141
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
