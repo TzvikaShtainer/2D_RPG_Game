@@ -66,7 +66,7 @@ public class CharacterStats : MonoBehaviour
     
     //make elements Generic
     
-    
+    [Header("Current Health")]
     public int currentHealth;
 
     public delegate void OnHealthChanged();
@@ -76,15 +76,15 @@ public class CharacterStats : MonoBehaviour
 
     private void Awake()
     {
-        critPower.SetDefaultValue(150);
-        currentHealth = GetMaxHealthValue();
+        //critPower.SetDefaultValue(150);
+        //currentHealth = GetMaxHealthValue();
     }
 
     protected virtual void Start()
     {
         fx = GetComponent<EntityFX>();
-        //critPower.SetDefaultValue(150);
-        //currentHealth = GetMaxHealthValue();
+        critPower.SetDefaultValue(150);
+        currentHealth = GetMaxHealthValue();
     }
 
     protected virtual void Update()
