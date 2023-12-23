@@ -172,6 +172,8 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
         equipmentList.Add(newItem);
         equipmentDictionary.Add(newEquipment, newItem);
         
+        newEquipment.AddModifiers();
+        
         RemoveItem(_item);
         
         UpdateSlotUI();
@@ -183,6 +185,8 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
         {
             equipmentList.Remove(value);
             equipmentDictionary.Remove(itemToRemove);
+            
+            itemToRemove.RemoveModifiers();
         }
     }
 
