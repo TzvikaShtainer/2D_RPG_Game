@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 
     [Header("Equipped Items")]
     public List<InventoryItem> equipmentList;
-    public Dictionary<ItemData, InventoryItem> equipmentDictionary;
+    public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
     
     
     [Header("Inventory")] 
@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
     private void Start()
     {
         equipmentList = new List<InventoryItem>();
-        equipmentDictionary = new Dictionary<ItemData, InventoryItem>();
+        equipmentDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
         
         inventoryList = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
@@ -53,6 +53,18 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 
     private void UpdateSlotUI()
     {
+        for (int i = 0; i < inventoryItemSlot.Length; i++)
+        {
+            inventoryItemSlot[i].CleanUpSlot();
+        }
+        
+        for (int i = 0; i < stashItemSlot.Length; i++)
+        {
+            stashItemSlot[i].CleanUpSlot();
+        }
+        
+        
+        
         for (int i = 0; i < inventoryList.Count; i++)
         {
             inventoryItemSlot[i].UpdateSlot(inventoryList[i]);
@@ -67,9 +79,15 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
     public void AddItem(ItemData _item)
     {
         if (_item.itemType == ItemType.Equipment)
-            AddItemTo(_item, inventoryList, inventoryDictionary);
+        {
+            AddToInventory(_item);
+            //AddItemTo(_item, inventoryList, inventoryDictionary);
+        }
         else if (_item.itemType == ItemType.Material)
-            AddItemTo(_item, stashList, stashDictionary);
+        {
+            AddToStash(_item);
+            //AddItemTo(_item, stashList, stashDictionary);
+        }
         
         UpdateSlotUI();
     }
@@ -118,13 +136,43 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 
     public void EquipItem(ItemData _item)
     {
-        InventoryItem newItem = new InventoryItem(_item);
+        ItemData_Equipment newEquipment = _item as ItemData_Equipment;
+        InventoryItem newItem = new InventoryItem(newEquipment);
+
+        ItemData_Equipment oldEquipment = null;
+        
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+        {
+            if (item.Key.equipmentType == newEquipment.equipmentType)
+                oldEquipment = item.Key;
+        }
+
+        //Debug.Log(itemToRemove);
+
+        if (oldEquipment != null)
+        {
+            UnEquipItem(oldEquipment);
+            AddItem(oldEquipment);
+        }
+        
         
         equipmentList.Add(newItem);
-        equipmentDictionary.Add(_item, newItem);
+        equipmentDictionary.Add(newEquipment, newItem);
         
         RemoveItem(_item);
+        
+        UpdateSlotUI();
     }
+
+    private void UnEquipItem(ItemData_Equipment itemToRemove)
+    {
+        if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
+        {
+            equipmentList.Remove(value);
+            equipmentDictionary.Remove(itemToRemove);
+        }
+    }
+
     public void RemoveItem(ItemData itemToRemove)
     {
         if (inventoryDictionary.TryGetValue(itemToRemove, out InventoryItem inventoryValue))
@@ -138,7 +186,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
                 inventoryValue.RemoveStack();
         }
         
-        if (inventoryDictionary.TryGetValue(itemToRemove, out InventoryItem stashValue))
+        if (stashDictionary.TryGetValue(itemToRemove, out InventoryItem stashValue))
         {
             if (stashValue.stackSize <= 1)
             {
