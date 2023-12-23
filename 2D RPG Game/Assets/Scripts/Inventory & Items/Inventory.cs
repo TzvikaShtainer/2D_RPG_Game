@@ -8,26 +8,29 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 {
     public static Inventory instance;
 
-    [Header("Equipped Items")]
+    [Header("Equipment")]
     public List<InventoryItem> equipmentList;
     public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
-    
     
     [Header("Inventory")] 
     public List<InventoryItem> inventoryList; 
     public Dictionary<ItemData, InventoryItem> inventoryDictionary;
     
-    [Header("Inventory UI")] 
-    [SerializeField] private Transform inventorySlotParent;
-    private UI_ItemSlot[] inventoryItemSlot; 
-    
     [Header("Stash")] 
     public List<InventoryItem> stashList;
     public Dictionary<ItemData, InventoryItem> stashDictionary;
+    
+    [Header("Inventory UI")] 
+    [SerializeField] private Transform inventorySlotParent;
+    private UI_ItemSlot[] inventoryItemSlot; 
 
     [Header("Stash UI")] 
     [SerializeField] private Transform stashSlotParent;
-    private UI_ItemSlot[] stashItemSlot; 
+    private UI_ItemSlot[] stashItemSlot;
+
+    [Header("Equipment UI")]
+    [SerializeField] private Transform equipmentSlotParent;
+    private UI_EquipmentSlot[] equipmentItemSlot;
     
     private void Awake()
     {
@@ -41,6 +44,7 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
     {
         equipmentList = new List<InventoryItem>();
         equipmentDictionary = new Dictionary<ItemData_Equipment, InventoryItem>();
+        equipmentItemSlot = equipmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
         
         inventoryList = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
@@ -53,6 +57,15 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
 
     private void UpdateSlotUI()
     {
+        for (int i = 0; i < equipmentItemSlot.Length; i++)
+        {
+            foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+            {
+                if (item.Key.equipmentType == equipmentItemSlot[i].slotType)
+                    equipmentItemSlot[i].UpdateSlot(item.Value);
+            }
+        }
+        
         for (int i = 0; i < inventoryItemSlot.Length; i++)
         {
             inventoryItemSlot[i].CleanUpSlot();
