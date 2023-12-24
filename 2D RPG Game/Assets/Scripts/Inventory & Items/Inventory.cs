@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Inventory : MonoBehaviour //one inventory that contains a list of items and dict for searching 
+public class Inventory : MonoBehaviour 
 {
     public static Inventory instance;
 
@@ -19,6 +19,8 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
     [Header("Stash")] 
     public List<InventoryItem> stashList;
     public Dictionary<ItemData, InventoryItem> stashDictionary;
+    
+    
     
     [Header("Inventory UI")] 
     [SerializeField] private Transform inventorySlotParent;
@@ -215,5 +217,42 @@ public class Inventory : MonoBehaviour //one inventory that contains a list of i
         }
         
         UpdateSlotUI();
+    }
+
+    public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> requiredMaterials)
+    {
+        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+        
+        for (int i = 0; i < requiredMaterials.Count; i++)
+        {
+            if (stashDictionary.TryGetValue(requiredMaterials[i].data, out InventoryItem stashValue))
+            {
+                if (stashValue.stackSize < requiredMaterials[i].stackSize)
+                {
+                    Debug.Log("not enough");
+                    return false;
+                }
+                else
+                {
+                    materialsToRemove.Add(stashValue);
+                }
+            }
+            else
+            {
+                Debug.Log("not enough");
+                return false;
+            }
+        }
+        
+        //materialsToRemove.Clear();
+
+        for (int i = 0; i < materialsToRemove.Count; i++)
+        {
+            RemoveItem(materialsToRemove[i].data);
+        }
+        
+        AddItem(_itemToCraft);
+        Debug.Log("here your item " + _itemToCraft.name);
+        return true;
     }
 }
