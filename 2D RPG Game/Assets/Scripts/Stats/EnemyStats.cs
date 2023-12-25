@@ -62,6 +62,7 @@ public override void Die()
         base.Die();
         
         enemy.Die();
-        dropSystem.DropItem();
+        
+        dropSystem.GenerateDrop();
     }
 }

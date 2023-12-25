@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemObject_Trigger : ItemObject
+public class ItemObject_Trigger : MonoBehaviour
 {
     private ItemObject myItemObject => GetComponentInParent<ItemObject>();
     
