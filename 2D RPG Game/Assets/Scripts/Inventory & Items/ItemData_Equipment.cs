@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum EquipmentType
 {
@@ -13,6 +14,8 @@ public enum EquipmentType
 public class ItemData_Equipment : ItemData
 {
     public EquipmentType equipmentType;
+
+    public ItemEffect[] itemEffects;
     
     [Header("Major Stats")]
     public int strength;
@@ -38,6 +41,14 @@ public class ItemData_Equipment : ItemData
 
     [Header("Craft Requirements")] 
     public List<InventoryItem> craftingMaterialsList;
+
+    public void ExecuteItemEffect()
+    {
+        for (int i = 0; i < itemEffects.Length; i++)
+        {
+            itemEffects[i].ExecuteEffect();
+        }
+    }
 
     public void AddModifiers()
     {
