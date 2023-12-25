@@ -42,11 +42,11 @@ public class ItemData_Equipment : ItemData
     [Header("Craft Requirements")] 
     public List<InventoryItem> craftingMaterialsList;
 
-    public void ExecuteItemEffect()
+    public void ExecuteItemEffect(Transform enemyPos)
     {
         for (int i = 0; i < itemEffects.Length; i++)
         {
-            itemEffects[i].ExecuteEffect();
+            itemEffects[i].ExecuteEffect(enemyPos);
         }
     }
 
