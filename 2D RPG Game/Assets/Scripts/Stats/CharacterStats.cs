@@ -72,7 +72,7 @@ public class CharacterStats : MonoBehaviour
     public delegate void OnHealthChanged();
     public event OnHealthChanged onHealthChanged;
 
-    protected bool isDead;
+    public bool isDead { get; private set; }
 
     private void Awake()
     {
