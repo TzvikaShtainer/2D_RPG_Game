@@ -7,6 +7,8 @@ public class EnemyStats : CharacterStats
 {
     private Enemy.Enemy enemy;
 
+    private ItemDrop dropSystem;
+
     [Header("Level Details")] [SerializeField]
     private int level = 1;
     
@@ -20,6 +22,8 @@ public class EnemyStats : CharacterStats
         base.Start();
 
         enemy = GetComponent<Enemy.Enemy>();
+
+        dropSystem = GetComponent<ItemDrop>();
     }
 
     private void ApplyLevelModifiers()
@@ -58,5 +62,6 @@ public override void Die()
         base.Die();
         
         enemy.Die();
+        dropSystem.DropItem();
     }
 }
