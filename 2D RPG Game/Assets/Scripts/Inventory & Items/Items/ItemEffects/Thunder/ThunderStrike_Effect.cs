@@ -9,6 +9,7 @@ public class ThunderStrike_Effect : ItemEffect
     
     public override void ExecuteEffect(Transform enemyPos)
     {
+        Debug.Log("thunder");
         GameObject newThunder = Instantiate(thunderPrefab, enemyPos.position, Quaternion.identity);
         
         Destroy(newThunder, 0.3f);

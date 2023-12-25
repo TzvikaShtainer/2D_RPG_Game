@@ -46,6 +46,7 @@ public class ItemData_Equipment : ItemData
     {
         for (int i = 0; i < itemEffects.Length; i++)
         {
+            Debug.Log("dsad");
             itemEffects[i].ExecuteEffect(enemyPos);
         }
     }

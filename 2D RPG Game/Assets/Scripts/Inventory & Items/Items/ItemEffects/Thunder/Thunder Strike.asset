@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ea797887cabf00469e1b46b8fbef86d, type: 3}
   m_Name: Thunder Strike
   m_EditorClassIdentifier: 
-  thunderPrefab: {fileID: 0}
+  thunderPrefab: {fileID: 9221673267643805397, guid: 186c6de97b8804849ba75f5a28830eb5, type: 3}
