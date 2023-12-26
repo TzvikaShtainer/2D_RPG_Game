@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item Effect", menuName = "Data/Item Effect/Thunder Strike")]
-public class ThunderStrike_Effect : ItemEffect
+public class ThunderStrikeEffect : ItemEffect
 {
     [SerializeField] private GameObject thunderPrefab;
     
     public override void ExecuteEffect(Transform enemyPos)
     {
-        Debug.Log("thunder");
         GameObject newThunder = Instantiate(thunderPrefab, enemyPos.position, Quaternion.identity);
         
         Destroy(newThunder, 0.3f);

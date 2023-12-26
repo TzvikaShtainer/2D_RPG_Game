@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1609702982071382016}
   - component: {fileID: 8123532130374905154}
   - component: {fileID: 4317830532270771558}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8899706566063777115}
   - component: {fileID: 9202961058184737375}
   - component: {fileID: 7182395976289083723}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: IceAndFIre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

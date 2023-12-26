@@ -6,9 +6,8 @@ using UnityEngine;
 
 public class IceAndFireController : ThunderStrikeController
 {
-    private Rigidbody2D rb;
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
-        
+        base.OnTriggerEnter2D(other);
     }
 }
