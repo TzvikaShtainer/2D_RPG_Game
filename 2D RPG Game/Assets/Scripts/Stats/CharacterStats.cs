@@ -385,4 +385,18 @@ public class CharacterStats : MonoBehaviour
         return maxHealth.GetBaseValue() + vitality.GetBaseValue() * healthPointsFromVitality;
     }
     #endregion
+
+    public virtual void IncreaseStatBy(int modifier, float duration, Stats statToModify)
+    {
+        StartCoroutine(StatModifyCoroutine(modifier, duration, statToModify));
+    }
+
+    private IEnumerator StatModifyCoroutine(int modifier, float duration, Stats statToModify)
+    {
+        statToModify.AddModifier(modifier);
+
+        yield return new WaitForSeconds(duration);
+        
+        statToModify.RemoveModifier(modifier);
+    }
 }

@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4bdd909e64e0d498b1715a9fab33e8, type: 3}
-  m_Name: Heal Effect On Hit
+  m_Script: {fileID: 11500000, guid: e2cc5fa994d6b3a44a55064473692471, type: 3}
+  m_Name: StrenghBuff
   m_EditorClassIdentifier: 
-  healPercent: 0.1
+  buffType: 0
+  buffAmount: 5
+  buffDuration: 5

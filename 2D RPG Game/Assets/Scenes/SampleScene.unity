@@ -1600,7 +1600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  swordType: 2
+  swordType: 1
   hitCooldown: 0.35
   maxDistance: 7
   spinDuration: 2
@@ -3694,6 +3694,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0c94e8b2c252381468f438f31dae6295, type: 2}
   - {fileID: 11400000, guid: 6238c2042db264b44b0929a7d2ca81ad, type: 2}
   - {fileID: 11400000, guid: adc05372d08e52f449c9832cba024481, type: 2}
+  - {fileID: 11400000, guid: 409147d5a64df1449914855d305ff06d, type: 2}
+  - {fileID: 11400000, guid: bdf100b76e79a9f46a71ead8f31f4c91, type: 2}
+  - {fileID: 11400000, guid: 293f871cdbb140c419bc0b90de2dd4d9, type: 2}
   equipmentList: []
   inventoryList: []
   stashList: []
@@ -5433,7 +5436,7 @@ MonoBehaviour:
   magicResPointFromIntelligent: 3
   healthPointsFromVitality: 5
   damage:
-    baseValue: 5
+    baseValue: 50
     modifiers: 
   critPower:
     baseValue: 0
