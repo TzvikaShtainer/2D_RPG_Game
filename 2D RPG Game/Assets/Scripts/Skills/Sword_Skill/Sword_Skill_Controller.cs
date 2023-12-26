@@ -206,6 +206,11 @@ public class Sword_Skill_Controller : MonoBehaviour
             return;
         
         enemy.StartCoroutine("FreezeTimeFor", freezeTimeDuration);
+        
+        ItemData_Equipment equippedAmulet = Inventory.instance.GetEquippedItem(EquipmentType.Amulet);
+                
+        if(equippedAmulet != null)
+            equippedAmulet.ExecuteItemEffect(enemy.transform);
     }
 
     private void SetupTargetForBounce(Collider2D other)
