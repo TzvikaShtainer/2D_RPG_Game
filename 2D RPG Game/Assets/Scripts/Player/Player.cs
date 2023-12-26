@@ -109,6 +109,9 @@ public class Player : Entity
         
         if(Input.GetKeyDown(KeyCode.S))
             Skill.crystal.CanUseSkill();
+        
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+            Inventory.instance.UseFlask();
     }
 
     public void AssignNewSword(GameObject newSword)
