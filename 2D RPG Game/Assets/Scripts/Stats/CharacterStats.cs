@@ -366,6 +366,15 @@ public class CharacterStats : MonoBehaviour
         onHealthChanged?.Invoke();
     }
 
+    public virtual void IncreaseHealth(int healthToIncrease)
+    {
+        currentHealth += healthToIncrease;
+        if (currentHealth > maxHealth.GetBaseValue())
+            currentHealth = maxHealth.GetBaseValue();
+        
+        onHealthChanged?.Invoke();
+    }
+
     public virtual void Die()
     {
         isDead = true;
