@@ -205,7 +205,7 @@ public class Sword_Skill_Controller : MonoBehaviour
         if(isSpinning)
             return;
         
-        enemy.StartCoroutine("FreezeTimeFor", freezeTimeDuration);
+        enemy.FreezeTimeFor(freezeTimeDuration);
         
         ItemData_Equipment equippedAmulet = Inventory.instance.GetEquippedItem(EquipmentType.Amulet);
                 

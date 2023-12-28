@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdf6b3fb9f58604c873b7c4c31500c0, type: 3}
   m_Name: Strength Flask
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: 
-  icon: {fileID: 0}
-  dropChance: 0
-  equipmentType: 0
+  itemType: 1
+  itemName: Strength Flask
+  icon: {fileID: 404454020, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  dropChance: 20
+  equipmentType: 3
   itemCooldown: 0
-  itemEffects: []
+  itemEffects:
+  - {fileID: 11400000, guid: c376273e980f81449a04a16231b97e8b, type: 2}
   strength: 0
   agility: 0
   intelligence: 0

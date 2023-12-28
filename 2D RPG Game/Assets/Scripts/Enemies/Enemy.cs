@@ -68,7 +68,9 @@ namespace Enemy
             
         }
 
-        protected virtual IEnumerator FreezeTimeFor(float seconds)
+        public virtual void FreezeTimeFor(float duration) => StartCoroutine(FreezeTimeCoroutine(duration));
+        
+        protected virtual IEnumerator FreezeTimeCoroutine(float seconds)
         {
             FreezeTime(true);
             
