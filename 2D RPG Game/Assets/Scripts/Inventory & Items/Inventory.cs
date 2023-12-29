@@ -36,6 +36,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform equipmentSlotParent;
     private UI_EquipmentSlot[] equipmentItemSlot;
 
+    [Header("Stat UI")]
+    [SerializeField] private Transform statSlotParent;
+    private UI_StatSlot[] statSlots;
+
     [Header("Items Cooldown")]
     private float lastTimeUsedFlask;
     private float flaskCooldown;
@@ -62,6 +66,10 @@ public class Inventory : MonoBehaviour
         stashList = new List<InventoryItem>();
         stashDictionary = new Dictionary<ItemData, InventoryItem>();
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
+
+        statSlots = statSlotParent.GetComponentsInChildren<UI_StatSlot>();
+        
+        
 
         AddStartingItems();
     }
@@ -95,8 +103,6 @@ public class Inventory : MonoBehaviour
             stashItemSlot[i].CleanUpSlot();
         }
         
-        
-        
         for (int i = 0; i < inventoryList.Count; i++)
         {
             inventoryItemSlot[i].UpdateSlot(inventoryList[i]);
@@ -105,6 +111,11 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < stashList.Count; i++)
         {
             stashItemSlot[i].UpdateSlot(stashList[i]);
+        }
+        
+        for (int i = 0; i < statSlots.Length; i++)
+        {
+            statSlots[i].UpdateStatType();
         }
     }
 
@@ -196,6 +207,7 @@ public class Inventory : MonoBehaviour
         RemoveItem(_item);
         
         UpdateSlotUI();
+        
     }
 
     public void UnEquipItem(ItemData_Equipment itemToRemove)

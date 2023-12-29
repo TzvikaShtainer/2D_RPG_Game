@@ -5,6 +5,24 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
+public enum StatType
+{
+    strength,
+    agility,
+    intelligence,
+    vitality,
+    damage,
+    critPower,
+    critChance,
+    maxHealth,
+    armor,
+    evasion,
+    magicResistance,
+    fireDamage,
+    iceDamage,
+    lightingDamage,
+}
+
 public class CharacterStats : MonoBehaviour
 {
     private EntityFX fx;
@@ -398,5 +416,25 @@ public class CharacterStats : MonoBehaviour
         yield return new WaitForSeconds(duration);
         
         statToModify.RemoveModifier(modifier);
+    }
+    
+    public Stats GetStat(StatType buffType)
+    {
+        if (buffType == StatType.strength) return strength;
+        if (buffType == StatType.agility) return agility;
+        if (buffType == StatType.intelligence) return intelligence;
+        if (buffType == StatType.vitality) return vitality;
+        if (buffType == StatType.damage) return damage;
+        if (buffType == StatType.critPower) return critPower;
+        if (buffType == StatType.critChance) return critChance;
+        if (buffType == StatType.maxHealth) return maxHealth;
+        if (buffType == StatType.armor) return armor;
+        if (buffType == StatType.evasion) return evasion;
+        if (buffType == StatType.magicResistance) return magicResistance;
+        if (buffType == StatType.fireDamage) return fireDamage;
+        if (buffType == StatType.iceDamage) return iceDamage;
+        if (buffType == StatType.lightingDamage) return lightingDamage;
+
+        return null;
     }
 }
