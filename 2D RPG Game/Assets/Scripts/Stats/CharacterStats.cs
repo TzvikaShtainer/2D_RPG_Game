@@ -34,8 +34,8 @@ public class CharacterStats : MonoBehaviour
     public Stats vitality;
     
     [Header("Points From Stats Stats")]
-    [SerializeField] private int magicResPointFromIntelligent = 3;
-    [SerializeField] private int healthPointsFromVitality = 5;
+    public int magicResPointFromIntelligent = 3;
+    public int healthPointsFromVitality = 5;
     
     [Header("Offensive Stats")]
     public Stats damage;

@@ -71,7 +71,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
     {
         if(item == null)
             return;
-        Debug.Log(item);
+        
         ui.itemToolTip.ShowToolTip(item.data as ItemData_Equipment);
     }
 
