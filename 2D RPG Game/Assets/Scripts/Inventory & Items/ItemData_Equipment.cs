@@ -43,6 +43,9 @@ public class ItemData_Equipment : ItemData
     [Header("Craft Requirements")] 
     public List<InventoryItem> craftingMaterialsList;
 
+    private int descriptionLength;
+    private int minDescriptionLength = 5;
+
     public void ExecuteItemEffect(Transform enemyPos)
     {
         for (int i = 0; i < itemEffects.Length; i++)
@@ -95,5 +98,54 @@ public class ItemData_Equipment : ItemData
         playerStats.fireDamage.RemoveModifier(fireDamage);
         playerStats.iceDamage.RemoveModifier(iceDamage);
         playerStats.lightingDamage.RemoveModifier(lightingDamage);
+    }
+
+    public override string GetDescription()
+    {
+        sb.Length = 0;
+        descriptionLength = 0;
+        
+        AddItemDescription(strength ,"Strength");
+        AddItemDescription(agility ,"agility");
+        AddItemDescription(intelligence ,"intelligence");
+        AddItemDescription(vitality ,"vitality");
+        
+        AddItemDescription(damage ,"damage");
+        AddItemDescription(critPower ,"critPower");
+        AddItemDescription(critChance ,"critChance");
+        
+        AddItemDescription(maxHealth ,"Health");
+        AddItemDescription(armor ,"armor");
+        AddItemDescription(evasion ,"evasion");
+        AddItemDescription(magicResistance ,"magicResistance");
+        
+        AddItemDescription(fireDamage ,"fireDamage");
+        AddItemDescription(iceDamage ,"iceDamage");
+        AddItemDescription(lightingDamage ,"lightingDamage");
+
+        if (descriptionLength < minDescriptionLength)
+        {
+            for (int i = 0; i < minDescriptionLength - descriptionLength; i++)
+            {
+                sb.AppendLine();
+                sb.Append("");
+            }
+        }
+        
+        return sb.ToString();
+    }
+
+    private void AddItemDescription(int value, string name)
+    {
+        if (value != 0)
+        {
+            if (sb.Length > 0)
+                sb.AppendLine();
+
+            if (value > 0)
+                sb.Append("+ " +value + " " +name); // sb.Append(name + ": " + value);
+
+            descriptionLength++;
+        }
     }
 }
