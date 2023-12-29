@@ -121,7 +121,10 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(ItemData _item)
     {
-        if (_item.itemType == ItemType.Equipment)
+        // if(!CanAddItem())
+        //     return;
+        
+        if (_item.itemType == ItemType.Equipment && CanAddItem())
         {
             AddToInventory(_item);
             //AddItemTo(_item, inventoryList, inventoryDictionary);
@@ -177,6 +180,40 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void RemoveItem(ItemData itemToRemove)
+    {
+        if (inventoryDictionary.TryGetValue(itemToRemove, out InventoryItem inventoryValue))
+        {
+            if (inventoryValue.stackSize <= 1)
+            {
+                inventoryList.Remove(inventoryValue);
+                inventoryDictionary.Remove(itemToRemove);
+            }
+            else
+                inventoryValue.RemoveStack();
+        }
+        
+        if (stashDictionary.TryGetValue(itemToRemove, out InventoryItem stashValue))
+        {
+            if (stashValue.stackSize <= 1)
+            {
+                stashList.Remove(stashValue);
+                stashDictionary.Remove(itemToRemove);
+            }
+            else
+                stashValue.RemoveStack();
+        }
+        
+        UpdateSlotUI();
+    }
+    
+    public bool CanAddItem()
+    {
+        if (inventoryList.Count >= inventoryItemSlot.Length)
+            return false;
+        
+        return true;
+    }
     public void EquipItem(ItemData _item)
     {
         ItemData_Equipment newEquipment = _item as ItemData_Equipment;
@@ -220,34 +257,7 @@ public class Inventory : MonoBehaviour
             itemToRemove.RemoveModifiers();
         }
     }
-
-    public void RemoveItem(ItemData itemToRemove)
-    {
-        if (inventoryDictionary.TryGetValue(itemToRemove, out InventoryItem inventoryValue))
-        {
-            if (inventoryValue.stackSize <= 1)
-            {
-                inventoryList.Remove(inventoryValue);
-                inventoryDictionary.Remove(itemToRemove);
-            }
-            else
-                inventoryValue.RemoveStack();
-        }
-        
-        if (stashDictionary.TryGetValue(itemToRemove, out InventoryItem stashValue))
-        {
-            if (stashValue.stackSize <= 1)
-            {
-                stashList.Remove(stashValue);
-                stashDictionary.Remove(itemToRemove);
-            }
-            else
-                stashValue.RemoveStack();
-        }
-        
-        UpdateSlotUI();
-    }
-
+    
     public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> requiredMaterials)
     {
         List<InventoryItem> materialsToRemove = new List<InventoryItem>();
