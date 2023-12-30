@@ -27,12 +27,13 @@ public class UI_StatSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Start()
     {
+        UpdateStatValueUI();
+        
         ui = GetComponentInParent<UI>();
         
-        UpdateStatType();
     }
 
-    public void UpdateStatType()
+    public void UpdateStatValueUI()
     {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 

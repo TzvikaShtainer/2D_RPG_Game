@@ -1334,6 +1334,7 @@ MonoBehaviour:
   statType: 5
   statValueText: {fileID: 127373131}
   statNameText: {fileID: 564380743}
+  description: 
 --- !u!114 &127373131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2580,13 +2581,14 @@ GameObject:
   - component: {fileID: 273285052}
   - component: {fileID: 273285054}
   - component: {fileID: 273285053}
+  - component: {fileID: 273285055}
   m_Layer: 5
   m_Name: Stat Tool Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &273285052
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2604,8 +2606,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -22.6814, y: -368}
-  m_SizeDelta: {x: 400, y: 200}
+  m_AnchoredPosition: {x: 459, y: -578}
+  m_SizeDelta: {x: 521.203, y: 102.7852}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &273285053
 MonoBehaviour:
@@ -2645,6 +2647,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273285051}
   m_CullTransparentMesh: 1
+--- !u!114 &273285055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273285051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0cf5aea5949cd4e9c3ce1d33e7fbd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statDescription: {fileID: 1493289354}
 --- !u!1 &283523192
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,7 +2986,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterUI: {fileID: 0}
-  itemToolTip: {fileID: 0}
+  itemToolTip: {fileID: 239601506}
+  statToolTip: {fileID: 273285055}
 --- !u!1001 &326709435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3136,6 +3152,7 @@ MonoBehaviour:
   statType: 9
   statValueText: {fileID: 340599947}
   statNameText: {fileID: 1311206634}
+  description: 
 --- !u!114 &340599947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5378,6 +5395,7 @@ MonoBehaviour:
   statType: 3
   statValueText: {fileID: 673720584}
   statNameText: {fileID: 364578819}
+  description: increase health
 --- !u!114 &673720584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5530,6 +5548,7 @@ MonoBehaviour:
   statType: 4
   statValueText: {fileID: 679365064}
   statNameText: {fileID: 1253897619}
+  description: 
 --- !u!114 &679365064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9206,6 +9225,7 @@ MonoBehaviour:
   statType: 0
   statValueText: {fileID: 947406235}
   statNameText: {fileID: 83381775}
+  description: increase damage and Crit Power
 --- !u!224 &974413311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 348650881614372218, guid: 80381b237413cbf4f98bc46d34a8f5ca, type: 3}
@@ -10736,6 +10756,7 @@ MonoBehaviour:
   statType: 13
   statValueText: {fileID: 1060606562}
   statNameText: {fileID: 2073045446}
+  description: 
 --- !u!114 &1060606562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11986,6 +12007,7 @@ MonoBehaviour:
   statType: 2
   statValueText: {fileID: 1132661875}
   statNameText: {fileID: 1389079600}
+  description: increase magic damage and res
 --- !u!114 &1132661875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12344,6 +12366,7 @@ MonoBehaviour:
   statType: 4
   statValueText: {fileID: 1172540611}
   statNameText: {fileID: 1359725286}
+  description: 
 --- !u!114 &1172540611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14672,6 +14695,7 @@ MonoBehaviour:
   statType: 11
   statValueText: {fileID: 1332393495}
   statNameText: {fileID: 501927927}
+  description: 
 --- !u!114 &1332393495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16604,6 +16628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterUI: {fileID: 0}
   itemToolTip: {fileID: 0}
+  statToolTip: {fileID: 0}
 --- !u!114 &1512801918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17800,6 +17825,7 @@ MonoBehaviour:
   statType: 10
   statValueText: {fileID: 1671040378}
   statNameText: {fileID: 993979785}
+  description: 
 --- !u!114 &1671040378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18404,6 +18430,7 @@ MonoBehaviour:
   statType: 1
   statValueText: {fileID: 1740414918}
   statNameText: {fileID: 238419715}
+  description: increase evasion and Crit chance
 --- !u!114 &1740414918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19141,6 +19168,7 @@ MonoBehaviour:
   statType: 7
   statValueText: {fileID: 1804729998}
   statNameText: {fileID: 1490268501}
+  description: 
 --- !u!114 &1804729998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19584,6 +19612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterUI: {fileID: 0}
   itemToolTip: {fileID: 0}
+  statToolTip: {fileID: 0}
 --- !u!114 &1859969442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19869,6 +19898,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterUI: {fileID: 0}
   itemToolTip: {fileID: 0}
+  statToolTip: {fileID: 0}
 --- !u!114 &1909494628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21953,6 +21983,7 @@ MonoBehaviour:
   statType: 6
   statValueText: {fileID: 2063454272}
   statNameText: {fileID: 1101785745}
+  description: 
 --- !u!114 &2063454272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24850,6 +24881,7 @@ MonoBehaviour:
   statType: 12
   statValueText: {fileID: 2115344615}
   statNameText: {fileID: 2100516985}
+  description: 
 --- !u!114 &2115344615
 MonoBehaviour:
   m_ObjectHideFlags: 0
