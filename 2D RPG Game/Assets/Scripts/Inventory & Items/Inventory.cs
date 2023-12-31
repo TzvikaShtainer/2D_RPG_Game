@@ -198,6 +198,7 @@ public class Inventory : MonoBehaviour
         {
             if (stashValue.stackSize <= 1)
             {
+                //Debug
                 stashList.Remove(stashValue);
                 stashDictionary.Remove(itemToRemove);
             }
@@ -274,6 +275,8 @@ public class Inventory : MonoBehaviour
                 }
                 else
                 {
+                    //Debug.Log(stashValue);
+                    //Debug.Log(stashValue.stackSize);
                     materialsToRemove.Add(stashValue);
                 }
             }
@@ -288,6 +291,8 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < materialsToRemove.Count; i++)
         {
+            Debug.Log("try to remove: "+materialsToRemove[i].data);
+            Debug.Log("amount to remove: "+materialsToRemove[i].stackSize);
             RemoveItem(materialsToRemove[i].data);
         }
         

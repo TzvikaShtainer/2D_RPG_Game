@@ -14,7 +14,7 @@ public class UI_CraftList : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
-        transform.parent.GetChild(1).GetComponent<UI_CraftList>().SetupCraftList();
+        transform.parent.GetChild(0).GetComponent<UI_CraftList>().SetupCraftList();
         
         SetupDefaultCraftWindow();
     }

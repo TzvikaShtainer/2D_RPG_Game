@@ -14,7 +14,7 @@ public class UI_CraftWindow : MonoBehaviour
     [SerializeField] private Image[] materialsImage;
 
     public void SetupCraftWindow(ItemData_Equipment data)
-    {
+    { 
         craftButton.onClick.RemoveAllListeners();
         
         CleanPrevData();

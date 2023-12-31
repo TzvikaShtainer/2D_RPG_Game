@@ -9,7 +9,7 @@ public class UI_CraftSlot : UI_ItemSlot
 {
     private void OnEnable()
     {
-        UpdateSlot(item);
+        //UpdateSlot(item);
     }
 
     protected override void Start()
