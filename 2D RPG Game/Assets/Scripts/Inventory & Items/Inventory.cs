@@ -262,8 +262,19 @@ public class Inventory : MonoBehaviour
     
     public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> requiredMaterials)
     {
-        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+        if (!CheckForEnoughMaterials(requiredMaterials, out var materialsToRemove)) return false;
         
+        RemoveItemsFromStash(materialsToRemove);
+        
+        AddItem(_itemToCraft);
+        Debug.Log("here your item " + _itemToCraft.name);
+        return true;
+    }
+    
+    private bool CheckForEnoughMaterials(List<InventoryItem> requiredMaterials, out List<InventoryItem> materialsToRemove)
+    {
+        materialsToRemove = new List<InventoryItem>();
+
         for (int i = 0; i < requiredMaterials.Count; i++)
         {
             if (stashDictionary.TryGetValue(requiredMaterials[i].data, out InventoryItem stashValue))
@@ -274,11 +285,7 @@ public class Inventory : MonoBehaviour
                     return false;
                 }
                 else
-                {
-                    //Debug.Log(stashValue);
-                    //Debug.Log(stashValue.stackSize);
-                    materialsToRemove.Add(stashValue);
-                }
+                    materialsToRemove.Add(requiredMaterials[i]);
             }
             else
             {
@@ -286,19 +293,17 @@ public class Inventory : MonoBehaviour
                 return false;
             }
         }
-        
-        //materialsToRemove.Clear();
 
+        return true;
+    }
+    
+    private void RemoveItemsFromStash(List<InventoryItem> materialsToRemove)
+    {
         for (int i = 0; i < materialsToRemove.Count; i++)
         {
-            Debug.Log("try to remove: "+materialsToRemove[i].data);
-            Debug.Log("amount to remove: "+materialsToRemove[i].stackSize);
-            RemoveItem(materialsToRemove[i].data);
+            for (int j = 0; j < materialsToRemove[i].stackSize; j++)
+                RemoveItem(materialsToRemove[i].data);   
         }
-        
-        AddItem(_itemToCraft);
-        Debug.Log("here your item " + _itemToCraft.name);
-        return true;
     }
 
     public List<InventoryItem> GetEquipmentList() => equipmentList;
