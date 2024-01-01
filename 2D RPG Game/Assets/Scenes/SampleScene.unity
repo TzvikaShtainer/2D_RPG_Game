@@ -452,12 +452,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 28042011}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Controlled Destruction
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1337980298}
@@ -2255,12 +2256,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144297213}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2281,6 +2282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal Mirage
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1037809522}
@@ -4971,12 +4973,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420384064}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4997,6 +4999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Mirage Blink
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1047076827}
@@ -5143,12 +5146,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429115115}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5169,6 +5172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash See Me
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1131140649}
@@ -5727,12 +5731,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468284921}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5753,6 +5757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry - Hp/Energy
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 474635507}
@@ -5982,12 +5987,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474635505}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6008,6 +6013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []
@@ -6121,12 +6127,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479056401}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6147,6 +6153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Multiple Mirage
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1862263634}
@@ -7360,12 +7367,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547129258}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7386,6 +7393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Black Hole
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1037809522}
@@ -8717,12 +8725,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734709437}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8743,6 +8751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry - Mirage Attack
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 468284923}
@@ -11497,12 +11506,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905736388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11523,6 +11532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dodge Mirage
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1206066590}
@@ -12454,12 +12464,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 984193883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12562,6 +12572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Sword Throw
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []
@@ -13713,12 +13724,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037809520}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13739,6 +13750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Time Mirage
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []
@@ -14187,12 +14199,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047076825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14213,6 +14225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []
@@ -15800,12 +15813,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131140647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15826,6 +15839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
   shouldBeLocked: []
@@ -16874,12 +16888,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178806200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16900,6 +16914,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash Here I Am
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 429115117}
@@ -17045,12 +17060,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206066588}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17071,6 +17086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dodge
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 420384066}
@@ -19485,12 +19501,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337980296}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19511,6 +19527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal Explosion
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1047076827}
@@ -21044,12 +21061,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445386559}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21152,6 +21169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Bouncy Sword
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 984193888}
@@ -22247,7 +22265,31 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 984193884}
+  - {fileID: 2124412642}
+  - {fileID: 2137535150}
+  - {fileID: 1445386560}
+  - {fileID: 1851095594}
+  - {fileID: 2082450723}
+  - {fileID: 1037809521}
+  - {fileID: 547129259}
+  - {fileID: 1862263633}
+  - {fileID: 144297214}
+  - {fileID: 479056402}
+  - {fileID: 1047076826}
+  - {fileID: 420384065}
+  - {fileID: 1206066589}
+  - {fileID: 905736389}
+  - {fileID: 1337980297}
+  - {fileID: 28042012}
+  - {fileID: 1942266982}
+  - {fileID: 1131140648}
+  - {fileID: 429115116}
+  - {fileID: 1178806201}
+  - {fileID: 474635506}
+  - {fileID: 468284922}
+  - {fileID: 734709438}
   m_Father: {fileID: 1512801920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -22269,7 +22311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -22363,30 +22405,6 @@ RectTransform:
   m_Children:
   - {fileID: 57847136}
   - {fileID: 1512456721}
-  - {fileID: 984193884}
-  - {fileID: 2124412642}
-  - {fileID: 2137535150}
-  - {fileID: 1445386560}
-  - {fileID: 1851095594}
-  - {fileID: 2082450723}
-  - {fileID: 1037809521}
-  - {fileID: 547129259}
-  - {fileID: 1862263633}
-  - {fileID: 144297214}
-  - {fileID: 479056402}
-  - {fileID: 1047076826}
-  - {fileID: 420384065}
-  - {fileID: 1206066589}
-  - {fileID: 905736389}
-  - {fileID: 1337980297}
-  - {fileID: 28042012}
-  - {fileID: 1942266982}
-  - {fileID: 1131140648}
-  - {fileID: 429115116}
-  - {fileID: 1178806201}
-  - {fileID: 474635506}
-  - {fileID: 468284922}
-  - {fileID: 734709438}
   m_Father: {fileID: 320320114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25840,12 +25858,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851095593}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -25948,6 +25966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Bullet Sword
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 984193888}
@@ -26155,12 +26174,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862263632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26181,6 +26200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Aggresive Mirage
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 1037809522}
@@ -27301,12 +27321,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942266981}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -27327,6 +27347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Multiple Distruction
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 28042013}
@@ -28828,12 +28849,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082450722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -28936,6 +28957,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Spining Sword
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 984193888}
@@ -31335,12 +31357,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124412641}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -31443,6 +31465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Time Stop
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 984193888}
@@ -31475,12 +31498,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137535149}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512801920}
+  m_Father: {fileID: 1512456721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -31583,6 +31606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Vulnerabilty
   skillDescription: 
+  lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
   - {fileID: 2124412646}

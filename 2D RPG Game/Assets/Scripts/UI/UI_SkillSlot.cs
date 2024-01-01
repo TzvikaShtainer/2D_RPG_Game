@@ -9,6 +9,9 @@ public class UI_SkillSlot : MonoBehaviour
     [SerializeField] private string skillName;
     [TextArea]
     [SerializeField] private string skillDescription;
+
+    [SerializeField] private Color lockedSkillColor;
+    
     
     public bool unlocked;
     
@@ -25,7 +28,7 @@ public class UI_SkillSlot : MonoBehaviour
     private void Start()
     {
         skillImage = GetComponent<Image>();
-        skillImage.color = Color.red;
+        skillImage.color = lockedSkillColor;
         
         GetComponent<Button>().onClick.AddListener(() => UnlockSkillSlot());
     }
@@ -45,6 +48,6 @@ public class UI_SkillSlot : MonoBehaviour
         }
 
         unlocked = true;
-        skillImage.color = Color.green;
+        skillImage.color = Color.white;
     }
 }
