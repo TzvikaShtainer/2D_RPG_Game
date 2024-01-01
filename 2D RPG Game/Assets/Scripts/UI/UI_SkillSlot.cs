@@ -6,12 +6,21 @@ using UnityEngine.UI;
 
 public class UI_SkillSlot : MonoBehaviour
 {
+    [SerializeField] private string skillName;
+    [TextArea]
+    [SerializeField] private string skillDescription;
+    
     public bool unlocked;
     
     [SerializeField] private UI_SkillSlot[] shouldBeUnlocked;
     [SerializeField] private UI_SkillSlot[] shouldBeLocked;
 
     [SerializeField] private Image skillImage;
+
+    private void OnValidate()
+    {
+        gameObject.name = "SkillSlot_UI - " + skillName;
+    }
 
     private void Start()
     {
