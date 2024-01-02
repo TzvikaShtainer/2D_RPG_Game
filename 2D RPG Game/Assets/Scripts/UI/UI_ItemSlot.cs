@@ -74,7 +74,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         
         ui.itemToolTip.ShowToolTip(item.data as ItemData_Equipment);
 
-        DynamicToolTipPos();
+        //DynamicToolTipPos();
     }
 
     private void DynamicToolTipPos()
@@ -89,7 +89,7 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
         else
             xOffset = 150;
 
-        if (mousePos.y > 320)
+        if (mousePos.y > 600)
             yOffset = -150;
         else
             yOffset = 150;
