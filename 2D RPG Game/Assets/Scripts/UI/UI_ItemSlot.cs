@@ -73,8 +73,30 @@ public class UI_ItemSlot : MonoBehaviour, IPointerDownHandler, IPointerEnterHand
             return;
         
         ui.itemToolTip.ShowToolTip(item.data as ItemData_Equipment);
+
+        DynamicToolTipPos();
     }
 
+    private void DynamicToolTipPos()
+    {
+        Vector2 mousePos = Input.mousePosition;
+
+        float xOffset = 0;
+        float yOffset = 0;
+
+        if (mousePos.x > 600)
+            xOffset = -150;
+        else
+            xOffset = 150;
+
+        if (mousePos.y > 320)
+            yOffset = -150;
+        else
+            yOffset = 150;
+
+        ui.itemToolTip.transform.position = new Vector2(mousePos.x + xOffset,mousePos.y + yOffset);
+    }
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         if(item == null)
