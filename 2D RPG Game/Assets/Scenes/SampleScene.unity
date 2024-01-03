@@ -478,6 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Controlled Destruction
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -2282,6 +2283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal Mirage
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -4448,6 +4450,7 @@ GameObject:
   - component: {fileID: 356682765}
   - component: {fileID: 356682766}
   - component: {fileID: 356682767}
+  - component: {fileID: 356682768}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -4498,13 +4501,10 @@ MonoBehaviour:
   clonePrefab: {fileID: 4140027804962579975, guid: da3e16497a6f64e4a9c1793564ec7738, type: 3}
   cloneDuration: 1.5
   delayForCloneSpawn: 0.4
-  canAttack: 1
-  canCreateCloneOnDashStart: 1
-  canCreateCloneOnDashOver: 1
-  canCreateCloneOnCounterAttack: 1
-  canDuplicateClone: 1
+  canAttack: 0
+  canDuplicateClone: 0
   chanceToDuplicate: 0
-  canCrystalInsteadOfClone: 1
+  canCrystalInsteadOfClone: 0
 --- !u!114 &356682764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,6 +4518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 1
+  dashUnlockedButton: {fileID: 1131140649}
+  cloneOnDashUnlockedButton: {fileID: 429115117}
+  cloneOnArrivalUnlockedButton: {fileID: 1178806202}
 --- !u!114 &356682765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4531,7 +4534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  swordType: 1
+  swordType: 0
   hitCooldown: 0.35
   maxDistance: 7
   spinDuration: 2
@@ -4587,8 +4590,8 @@ MonoBehaviour:
   crystalPrefab: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
   crystalDuration: 2
   canCloneInsteadOfCrystal: 0
-  canExplode: 1
-  canMoveToEnemy: 1
+  canExplode: 0
+  canMoveToEnemy: 0
   moveSpeed: 5
   canUseMultiStacks: 0
   amountOfCrystals: 3
@@ -4598,6 +4601,26 @@ MonoBehaviour:
   - {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
   - {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
   - {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
+--- !u!114 &356682768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356682760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f452ffe8f4c8b4bae2b9112a983fd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  parryUnlockedButton: {fileID: 474635507}
+  parryUnlocked: 0
+  parryRestoreUnlockedButton: {fileID: 468284923}
+  parryRestoreUnlocked: 0
+  parryHealthPercentageToRestore: 0.1
+  parryWithMirageUnlockedButton: {fileID: 734709439}
+  parryWithMirageUnlocked: 0
 --- !u!1 &364578817
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,6 +5115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Mirage Blink
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -5265,6 +5289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash See Me
   skillDescription: 
+  skillPrice: 100
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -5850,6 +5875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry - Hp/Energy
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -6106,6 +6132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
@@ -6246,6 +6273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Multiple Mirage
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -7486,6 +7514,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Black Hole
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -8771,6 +8800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 794467608}
+  currency: 500
 --- !u!4 &721746894
 Transform:
   m_ObjectHideFlags: 0
@@ -8844,6 +8874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Parry - Mirage Attack
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -10469,7 +10500,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &829867589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11625,6 +11656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dodge Mirage
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -12665,6 +12697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Sword Throw
   skillDescription: 1111
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
@@ -13843,6 +13876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Time Mirage
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
@@ -14318,6 +14352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
@@ -15932,6 +15967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash
   skillDescription: 
+  skillPrice: 50
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked: []
@@ -17007,6 +17043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dash Here I Am
   skillDescription: 
+  skillPrice: 150
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -17179,6 +17216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Dodge
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -19620,6 +19658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Crystal Explosion
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -21396,6 +21435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Bouncy Sword
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -25171,7 +25211,7 @@ RectTransform:
   m_Father: {fileID: 1136606422}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.4949036, y: -0.000022888184}
   m_SizeDelta: {x: 4.9901, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26194,6 +26234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Bullet Sword
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -26428,6 +26469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Aggresive Mirage
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -27709,6 +27751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Multiple Distruction
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -29319,6 +29362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Spining Sword
   skillDescription: 
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -31827,6 +31871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Time Stop
   skillDescription: 22222
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:
@@ -31968,6 +32013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillName: Vulnerabilty
   skillDescription: 333333
+  skillPrice: 0
   lockedSkillColor: {r: 0.5, g: 0.34276727, b: 0.34276727, a: 0.5294118}
   unlocked: 0
   shouldBeUnlocked:

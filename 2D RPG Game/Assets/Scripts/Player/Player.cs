@@ -140,7 +140,7 @@ public class Player : Entity
         if(IsWallDetected())
             return;
         
-        if(!Skill.Dash.dashUnlocked)
+        if(!Skill.Dash.DashUnlocked)
                 return;
         
         if(Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.Dash.CanUseSkill())

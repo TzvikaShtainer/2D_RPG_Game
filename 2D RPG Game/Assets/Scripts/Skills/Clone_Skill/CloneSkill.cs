@@ -11,8 +11,6 @@ public class CloneSkill : Skill
     [Space]
     [SerializeField] private bool canAttack;
     
-    [SerializeField] private bool canCreateCloneOnCounterAttack;
-    
     [Header("Clone Can Duplicate")]
     [SerializeField] private bool canDuplicateClone;
     [SerializeField] private float chanceToDuplicate;
@@ -34,14 +32,12 @@ public class CloneSkill : Skill
             SetupClone(clonePosition, cloneDuration, canAttack, offset, FindClosestEnemy(newClone.transform), canDuplicateClone, chanceToDuplicate, Player);
     }
     
-    public void CanCreateCloneOnCounterAttack(Transform enemy)
+    public void CreateCloneWithDelay(Transform enemy)
     {
-        if (canCreateCloneOnCounterAttack)
-            StartCoroutine(CreateCloneWithDelay(enemy, new Vector3(2 * Player.FacingDir, 0, 0)));
-
+        StartCoroutine(CloneDelayCoroutine(enemy, new Vector3(2 * Player.FacingDir, 0, 0)));
     }
 
-    private IEnumerator CreateCloneWithDelay(Transform transform, Vector3 offset)
+    private IEnumerator CloneDelayCoroutine(Transform transform, Vector3 offset)
     {
         yield return new WaitForSeconds(delayForCloneSpawn);
         CreateClone(transform, offset);
