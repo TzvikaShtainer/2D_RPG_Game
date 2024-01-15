@@ -34,8 +34,10 @@ public class Parry_Skill : Skill
         
         if (parryRestoreUnlocked)
         {
-            Debug.Log(Player);
-            int amount = Mathf.RoundToInt(parryHealthPercentageToRestore * Player.Stats.GetMaxHealthValue());
+            if (Player == null)
+                Player = PlayerManager.instance.player;
+            
+            int amount = Mathf.RoundToInt(Player.Stats.GetMaxHealthValue() * parryHealthPercentageToRestore);
             Player.Stats.IncreaseHealth(amount);
         }
     }
