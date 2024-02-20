@@ -107,8 +107,8 @@ public class Player : Entity
         
         CheckForDashInput();
         
-        if(Input.GetKeyDown(KeyCode.S) && Skill.crystal.crystalUnlocked)
-            Skill.crystal.CanUseSkill();
+        if(Input.GetKeyDown(KeyCode.S) && Skill.Crystal.crystalUnlocked)
+            Skill.Crystal.CanUseSkill();
         
         if(Input.GetKeyDown(KeyCode.Alpha1))
             Inventory.instance.UseFlask();

@@ -11,9 +11,10 @@ public class SkillManager : MonoBehaviour
     public CloneSkill Clone { get; private set; }
     public Dash_Skill Dash { get; private set; }
     public Sword_Skill Sword { get; private set; }
-    public BlackHole_Skill blackHole { get; private set; }
-    public Crystal_Skill crystal{ get; private set; }
-    public Parry_Skill parry{ get; private set; }
+    public BlackHole_Skill BlackHole { get; private set; }
+    public Crystal_Skill Crystal{ get; private set; }
+    public Parry_Skill Parry{ get; private set; }
+    public Dodge_Skill Dodge { get; private set; }
 
     private void Awake()
     {
@@ -28,8 +29,9 @@ public class SkillManager : MonoBehaviour
         Clone = GetComponent<CloneSkill>();
         Dash = GetComponent<Dash_Skill>();
         Sword = GetComponent<Sword_Skill>();
-        blackHole = GetComponent<BlackHole_Skill>();
-        crystal = GetComponent<Crystal_Skill>();
-        parry = GetComponent<Parry_Skill>();
+        BlackHole = GetComponent<BlackHole_Skill>();
+        Crystal = GetComponent<Crystal_Skill>();
+        Parry = GetComponent<Parry_Skill>();
+        Dodge = GetComponent<Dodge_Skill>();
     }
 }

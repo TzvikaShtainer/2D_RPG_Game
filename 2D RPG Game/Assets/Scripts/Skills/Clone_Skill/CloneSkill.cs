@@ -22,7 +22,7 @@ public class CloneSkill : Skill
     {
         if (canCrystalInsteadOfClone)
         {
-            SkillManager.instance.crystal.CreateCrystal();
+            SkillManager.instance.Crystal.CreateCrystal();
             return;
         }
         

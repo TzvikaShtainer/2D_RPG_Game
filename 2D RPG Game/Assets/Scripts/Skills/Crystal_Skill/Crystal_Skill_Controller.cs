@@ -94,7 +94,7 @@ public class Crystal_Skill_Controller : MonoBehaviour
 
     public void ChooseRandomEnemy()
     {
-        float radius = SkillManager.instance.blackHole.GetBlackHoleRadius();
+        float radius = SkillManager.instance.BlackHole.GetBlackHoleRadius();
         
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, whatIsEnemy);
 

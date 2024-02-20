@@ -106,8 +106,8 @@ public class BlackHole_Skill_Controller : MonoBehaviour
 
             if (SkillManager.instance.Clone.canCrystalInsteadOfClone)
             {
-                SkillManager.instance.crystal.CreateCrystal();
-                SkillManager.instance.crystal.CurrentCrystalChooseRandomEnemy();
+                SkillManager.instance.Crystal.CreateCrystal();
+                SkillManager.instance.Crystal.CurrentCrystalChooseRandomEnemy();
             }
             else
             {
