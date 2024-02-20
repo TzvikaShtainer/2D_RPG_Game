@@ -199,13 +199,19 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy.Enemy enemy)
     {
+        EnemyStats enemyStats = enemy.GetComponent<EnemyStats>();
+        
         //enemy.DamageEffects();
-        player.Stats.DoDamage(enemy.GetComponent<CharacterStats>());
+        player.Stats.DoDamage(enemyStats);
         
         if(isSpinning)
             return;
         
-        enemy.FreezeTimeFor(freezeTimeDuration);
+        if(player.Skill.Sword.timeStopUnlock)
+            enemy.FreezeTimeFor(freezeTimeDuration);
+        
+        if(player.Skill.Sword.vulnerableUnlock)
+            enemyStats.MakeVulnerableFor(freezeTimeDuration);
         
         ItemData_Equipment equippedAmulet = Inventory.instance.GetEquippedItem(EquipmentType.Amulet);
                 

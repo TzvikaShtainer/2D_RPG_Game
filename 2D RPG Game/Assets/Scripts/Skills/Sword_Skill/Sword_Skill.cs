@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Update = Unity.VisualScripting.Update;
 
 public enum SwordType
@@ -19,27 +20,40 @@ public class Sword_Skill : Skill
     public SwordType swordType = SwordType.Regular;
 
     [Header("Spin Info")]
+    [SerializeField] private UI_SkillSlot spinUnlockButton;
     [SerializeField] private float hitCooldown = 0.35f;
     [SerializeField] private float maxDistance;
     [SerializeField] private float spinDuration;
     [SerializeField] private float spinGravity;
-    
+
     [Header("Bounce Info")]
+    [SerializeField] private UI_SkillSlot bounceUnlockButton;
     [SerializeField] private int bounceAmount;
     [SerializeField] private float bounceGravity;
     [SerializeField] private float bounceSpeed;
     
     [Header("Peirce Info")]
+    [SerializeField] private UI_SkillSlot pierceUnlockButton;
     [SerializeField] private int peirceAmount;
     [SerializeField] private float peirceGravity;
-    
+
     [Header("Sword Skill Info")]
+    [SerializeField] private UI_SkillSlot swordUnlockButton;
+
+    public bool swordUnlocked { get; private set; }
     [SerializeField] private GameObject swordPrefab;
     [SerializeField] private Vector2 launchForce;
     [SerializeField] private float swordGravity;
     [SerializeField] private float freezeTimeDuration;
     [SerializeField] private float swordTimeDuration;
     [SerializeField] private float returnSpeed;
+
+    [Header("Passive Skills")]
+    [SerializeField] private UI_SkillSlot timeStopUnlockButton;
+    public bool timeStopUnlock { get; private set; }
+    [SerializeField] private UI_SkillSlot vulnerableUnlockButton;
+    public bool vulnerableUnlock{ get; private set; }
+    
 
     private Vector2 finalDir;
 
@@ -57,6 +71,13 @@ public class Sword_Skill : Skill
         GenerateDots();
 
         SetGravity();
+        
+        swordUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSword);
+        spinUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockSpinSword);
+        pierceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockPierceSword);
+        bounceUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockBounceSword);
+        timeStopUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockTimeStop);
+        vulnerableUnlockButton.GetComponent<Button>().onClick.AddListener(UnlockVulnerable);
     }
     
     protected override void Update()
@@ -104,6 +125,49 @@ public class Sword_Skill : Skill
         DotsActive(false);
     }
 
+    #region Unlock
+
+    void UnlockTimeStop()
+    {
+        if (timeStopUnlockButton.unlocked)
+            timeStopUnlock = true;
+    }
+    
+    void UnlockVulnerable()
+    {
+        if (vulnerableUnlockButton.unlocked)
+            vulnerableUnlock = true;
+    }
+    
+    void UnlockSword()
+    {
+        if (swordUnlockButton.unlocked)
+        {
+            swordType = SwordType.Regular;
+            swordUnlocked = true;
+        }
+    }
+    
+    void UnlockBounceSword()
+    {
+        if (bounceUnlockButton.unlocked)
+            swordType = SwordType.Bounce;
+    }
+    
+    void UnlockPierceSword()
+    {
+        if (pierceUnlockButton.unlocked)
+            swordType = SwordType.Pierce;
+    }
+    
+    void UnlockSpinSword()
+    {
+        if (spinUnlockButton.unlocked)
+            swordType = SwordType.Spin;
+    }
+
+    #endregion
+    
     #region Aim
     public Vector2 AimDirection()
     {
