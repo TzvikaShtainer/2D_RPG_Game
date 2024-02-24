@@ -16,6 +16,12 @@ public class UI : MonoBehaviour
     public UI_CraftWindow craftWindow;
 
     public UI_SkillToolTip skillToolTip;
+
+    private void Awake()
+    {
+        SwitchTo(skillTreeUI); //fix for not running skillTree and nor sigh the events to buttons bec its disable
+    }
+
     private void Start()
     {
         SwitchTo(null);
