@@ -42,4 +42,26 @@ public class PlayerStats : CharacterStats
     {
         player.Skill.Dodge.CreateMirageOnDoDodge();
     }
+
+    public void CloneDoDamage(CharacterStats targetStats, float multiplier)
+    {
+        if (TargetCanAvoidAttack(targetStats))
+            return;
+
+        int totalDamage = damage.GetBaseValue() + strength.GetBaseValue();
+
+        if (multiplier > 0)
+            totalDamage = Mathf.RoundToInt(totalDamage * multiplier);
+        
+        if (CanCrit())
+        {
+            totalDamage = CalcCritDamage(totalDamage);
+        }
+        
+        totalDamage = CalcTargetArmor(targetStats, totalDamage);
+        
+        targetStats.TakeDamage(totalDamage);
+        
+        //DoMagicalDamage(targetStats);
+    }
 }

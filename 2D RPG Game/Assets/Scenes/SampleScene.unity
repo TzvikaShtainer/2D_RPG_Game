@@ -4451,6 +4451,7 @@ GameObject:
   - component: {fileID: 356682766}
   - component: {fileID: 356682767}
   - component: {fileID: 356682768}
+  - component: {fileID: 356682769}
   m_Layer: 0
   m_Name: SkillManager
   m_TagString: Untagged
@@ -4535,21 +4536,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   swordType: 0
+  spinUnlockButton: {fileID: 2082450727}
   hitCooldown: 0.35
   maxDistance: 7
   spinDuration: 2
   spinGravity: 1
+  bounceUnlockButton: {fileID: 1445386564}
   bounceAmount: 5
   bounceGravity: 5
   bounceSpeed: 20
+  pierceUnlockButton: {fileID: 1851095598}
   peirceAmount: 2
   peirceGravity: 1
+  swordUnlockButton: {fileID: 984193888}
   swordPrefab: {fileID: 3500784666819261468, guid: 62e747fda95cc1f4faadc48effdfffe6, type: 3}
   launchForce: {x: 35, y: 25}
   swordGravity: 3
   freezeTimeDuration: 1.5
   swordTimeDuration: 7
   returnSpeed: 15
+  timeStopUnlockButton: {fileID: 2124412646}
+  vulnerableUnlockButton: {fileID: 2137535154}
   numberOfDots: 20
   spaceBetweenDots: 0.07
   dotPrefab: {fileID: 1081897812176278434, guid: 7a8c91bc1cad04246b85a087d6a5f989, type: 3}
@@ -4589,10 +4596,15 @@ MonoBehaviour:
   cooldown: 0
   crystalPrefab: {fileID: 2362659175466155003, guid: 3d57cbdef39a4e947a2fdd5e53bd05b5, type: 3}
   crystalDuration: 2
+  unlockCloneInsteadButton: {fileID: 420384066}
   canCloneInsteadOfCrystal: 0
+  unlockCrystalButton: {fileID: 1047076827}
+  unlockExplosiveButton: {fileID: 1337980298}
   canExplode: 0
+  unlockMovingCrystalButton: {fileID: 28042013}
   canMoveToEnemy: 0
   moveSpeed: 5
+  unlockMultiStackButton: {fileID: 1942266983}
   canUseMultiStacks: 0
   amountOfCrystals: 3
   multiCrystalCooldown: 4
@@ -4621,6 +4633,24 @@ MonoBehaviour:
   parryHealthPercentageToRestore: 0.1
   parryWithMirageUnlockedButton: {fileID: 734709439}
   parryWithMirageUnlocked: 0
+--- !u!114 &356682769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356682760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9d112fb308cbc4e811887b4b5bcc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  unlockedDodgeButton: {fileID: 1206066590}
+  evasionAmount: 10
+  dodgeUnlocked: 0
+  unlockedMirageDodgeButton: {fileID: 905736390}
+  mirageDodgeUnlocked: 0
 --- !u!1 &364578817
 GameObject:
   m_ObjectHideFlags: 0
