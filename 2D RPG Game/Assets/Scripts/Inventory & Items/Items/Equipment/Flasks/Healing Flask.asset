@@ -20,6 +20,9 @@ MonoBehaviour:
   itemCooldown: 2
   itemEffects:
   - {fileID: 11400000, guid: 8082ae571a1bae540b79fd1757492d95, type: 2}
+  itemEffectDescription: 'Heals For 30% Of Health.
+
+    Colldown: 2sec'
   strength: 0
   agility: 0
   intelligence: 0

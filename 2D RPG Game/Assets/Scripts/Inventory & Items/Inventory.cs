@@ -42,7 +42,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Items Cooldown")]
     private float lastTimeUsedFlask;
-    private float flaskCooldown;
+    public float flaskCooldown { get; private set; }
     private float lastTimeUsedArmor;
     private float armorCooldown;
     private void Awake()
