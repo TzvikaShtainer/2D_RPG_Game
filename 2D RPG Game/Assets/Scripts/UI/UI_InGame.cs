@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class UI_InGame : MonoBehaviour
     [SerializeField] private Image blackHoleImage;
     [SerializeField] private Image flaskImage;
 
-
+    [SerializeField] private TextMeshProUGUI currentSouls;
     private SkillManager skills;
 
     private void Start()
@@ -26,10 +27,13 @@ public class UI_InGame : MonoBehaviour
             playerStats.onHealthChanged += UpdateHealthUI;
 
         skills = SkillManager.instance;
+        
     }
 
     private void Update()
     {
+        currentSouls.text = PlayerManager.instance.GetCurrency().ToString("#,#");//for ,
+        
         if (Input.GetKeyDown(KeyCode.LeftShift) && skills.Dash.DashUnlocked)
             SetCooldownOf(dashImage);
         
