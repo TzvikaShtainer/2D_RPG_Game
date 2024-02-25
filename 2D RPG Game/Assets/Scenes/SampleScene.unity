@@ -14658,6 +14658,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960046688}
   m_CullTransparentMesh: 1
+--- !u!1 &966228483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966228485}
+  - component: {fileID: 966228484}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &966228484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966228483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa3b56b0a43b4947939b0ebadd82dc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: Data.2D_RPG
+  FileLoc: C:\Users\tzvik\AppData\LocalLow\DefaultCompany\2D RPG Game
+--- !u!4 &966228485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966228483}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1014.56134, y: 646.91016, z: -5.0799794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &974413311 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 348650881614372218, guid: 80381b237413cbf4f98bc46d34a8f5ca, type: 3}
@@ -30591,6 +30637,7 @@ GameObject:
   - component: {fileID: 1859969440}
   - component: {fileID: 1859969443}
   - component: {fileID: 1859969442}
+  - component: {fileID: 1859969444}
   m_Layer: 5
   m_Name: Option_UI
   m_TagString: Untagged
@@ -30660,6 +30707,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859969439}
   m_CullTransparentMesh: 1
+--- !u!114 &1859969444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859969439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7f9678dd1f3294d9e279e314da0016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1860306985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37550,6 +37609,7 @@ SceneRoots:
   - {fileID: 62913122}
   - {fileID: 859969989}
   - {fileID: 246110192}
+  - {fileID: 966228485}
   - {fileID: 721746894}
   - {fileID: 356682762}
   - {fileID: 799630803}
